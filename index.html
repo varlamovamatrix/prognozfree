@@ -47,6 +47,7 @@
         radial-gradient(circle at 10% 20%, rgba(232, 179, 158, 0.16) 0%, transparent 40%),
         radial-gradient(circle at 90% 80%, rgba(167, 180, 160, 0.16) 0%, transparent 40%);
       min-height: 100vh;
+      padding-bottom: 50px;
     }
 
     h1, h2, h3, h4, .font-heading {
@@ -70,12 +71,12 @@
     }
 
     header {
-      padding: 22px 0;
+      padding: 18px 0;
       position: sticky;
       top: 0;
       z-index: 50;
       backdrop-filter: blur(14px);
-      background: rgba(244, 238, 230, 0.88);
+      background: rgba(244, 238, 230, 0.9);
       border-bottom: 1px solid rgba(190, 152, 92, 0.16);
     }
 
@@ -87,23 +88,30 @@
     }
 
     .brand-title {
-      font-size: 1.15rem;
+      font-size: 1.12rem;
       font-weight: 700;
       color: var(--text-main);
+      letter-spacing: -0.01em;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     .nav-cta-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 22px;
+      gap: 6px;
+      padding: 9px 18px;
       border-radius: var(--radius-pill);
       background: #FFFFFF;
       color: var(--text-main);
       border: 1px solid rgba(190, 152, 92, 0.35);
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       transition: all 0.25s ease;
       box-shadow: 0 4px 14px rgba(57, 46, 69, 0.04);
     }
@@ -115,8 +123,44 @@
       transform: translateY(-2px);
     }
 
+    .nav-btn-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 20px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-peach);
+      color: var(--text-main);
+      border: 1px solid rgba(190, 152, 92, 0.4);
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(232, 179, 158, 0.45);
+      transition: all 0.25s ease;
+    }
+
+    .nav-btn-highlight:hover {
+      background: #e2a48c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(232, 179, 158, 0.6);
+    }
+
+    @media (max-width: 640px) {
+      .brand-title {
+        font-size: 0.98rem;
+      }
+      .nav-cta-btn {
+        display: none;
+      }
+      .nav-btn-highlight {
+        padding: 8px 14px;
+        font-size: 0.82rem;
+      }
+    }
+
     .hero-section {
-      padding: 55px 0 30px;
+      padding: 48px 0 26px;
       text-align: center;
     }
 
@@ -131,7 +175,7 @@
       font-size: 0.84rem;
       font-weight: 600;
       border-radius: var(--radius-pill);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
@@ -153,7 +197,41 @@
       font-size: clamp(1rem, 1.8vw, 1.18rem);
       color: rgba(57, 46, 69, 0.82);
       max-width: 720px;
-      margin: 0 auto 28px;
+      margin: 0 auto 24px;
+    }
+
+    .hero-actions-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+
+    .btn-hero-offer {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 26px;
+      border-radius: var(--radius-pill);
+      background: #FFFFFF;
+      border: 1.5px solid var(--accent-gold);
+      color: var(--text-main);
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(190, 152, 92, 0.18);
+      transition: all 0.25s ease;
+    }
+
+    .btn-hero-offer:hover {
+      background: var(--text-main);
+      color: #FFFFFF;
+      border-color: var(--text-main);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(57, 46, 69, 0.2);
     }
 
     .hero-features {
@@ -305,7 +383,20 @@
     .matrix-subtitle-meta {
       font-size: 0.95rem;
       color: rgba(57, 46, 69, 0.7);
-      margin-bottom: 24px;
+      margin-bottom: 12px;
+    }
+
+    .matrix-interactive-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: var(--accent-gold);
+      background: rgba(190, 152, 92, 0.12);
+      padding: 4px 14px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 22px;
+      font-weight: 600;
     }
 
     .matrix-svg-container {
@@ -322,26 +413,29 @@
 
     .matrix-node {
       cursor: pointer;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), filter 0.28s ease;
     }
 
     .matrix-node:hover {
-      transform: scale(1.08);
+      transform: scale(1.12);
+      filter: drop-shadow(0 6px 14px rgba(57, 46, 69, 0.2));
     }
 
     .node-label-sub {
       font-family: 'Golos Text', sans-serif;
-      font-size: 11.5px;
+      font-size: 12px;
       fill: var(--text-main);
-      font-weight: 500;
+      font-weight: 600;
+      pointer-events: none;
     }
 
     .node-label-val {
       font-family: 'Manrope', sans-serif;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 20px;
       dominant-baseline: central;
       text-anchor: middle;
+      pointer-events: none;
     }
 
     .positions-quick-nav {
@@ -349,7 +443,7 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 10px;
-      margin: 24px 0 10px;
+      margin: 24px 0 16px;
     }
 
     .pos-quick-badge {
@@ -363,12 +457,53 @@
       font-size: 0.86rem;
       font-weight: 600;
       color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .pos-quick-badge:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(57, 46, 69, 0.08);
     }
 
     .pos-quick-badge .circle-tag {
       width: 10px;
       height: 10px;
       border-radius: 50%;
+    }
+
+    /* Share & Print Action Toolbar */
+    .matrix-actions-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px dashed rgba(190, 152, 92, 0.25);
+    }
+
+    .btn-action-tool {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
+      background: #FFFFFF;
+      color: var(--text-main);
+      border: 1px solid rgba(190, 152, 92, 0.35);
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Golos Text', sans-serif;
+    }
+
+    .btn-action-tool:hover {
+      background: rgba(232, 179, 158, 0.2);
+      border-color: var(--accent-gold);
+      transform: translateY(-1px);
     }
 
     .quick-summary-section, .event-codes-section {
@@ -384,18 +519,32 @@
     .compact-summary-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 20px;
       margin-bottom: 24px;
     }
 
     .compact-summary-row {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      padding: 14px 18px;
+      gap: 12px;
+      padding: 22px 24px;
       background: #FFFFFF;
-      border: 1px solid rgba(190, 152, 92, 0.18);
-      border-radius: 16px;
+      border: 1.5px solid rgba(190, 152, 92, 0.2);
+      border-radius: 20px;
+      transition: all 0.25s ease;
+      scroll-margin-top: 110px;
+    }
+
+    .compact-summary-row:hover {
+      border-color: var(--accent-gold);
+      box-shadow: 0 6px 18px rgba(57, 46, 69, 0.05);
+    }
+
+    .compact-summary-row.highlight-row {
+      border-color: var(--accent-gold);
+      background: linear-gradient(180deg, #FFFFFF 0%, #FDFBF8 100%);
+      box-shadow: 0 0 0 3px rgba(190, 152, 92, 0.22), 0 10px 24px rgba(57, 46, 69, 0.08);
+      transform: scale(1.01);
     }
 
     .compact-row-header {
@@ -410,24 +559,99 @@
       align-items: center;
       gap: 6px;
       font-weight: 700;
-      font-size: 0.86rem;
-      padding: 4px 12px;
+      font-size: 0.9rem;
+      padding: 5px 14px;
       border-radius: var(--radius-pill);
       white-space: nowrap;
       color: var(--text-main);
     }
 
     .compact-pos-role {
-      font-size: 0.86rem;
+      font-size: 0.85rem;
       color: rgba(57, 46, 69, 0.75);
       font-weight: 500;
     }
 
+    .hook-recognition-pill {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: #6d4223;
+      background: rgba(232, 179, 158, 0.16);
+      border-left: 3px solid var(--accent-peach);
+      padding: 9px 14px;
+      border-radius: 10px;
+      line-height: 1.48;
+    }
+
+    .hook-recognition-pill strong {
+      color: #935930;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
     .compact-summary-text {
-      font-size: 0.92rem;
+      font-size: 0.98rem;
       color: var(--text-main);
-      padding-top: 6px;
+      padding-top: 10px;
       border-top: 1px dashed rgba(190, 152, 92, 0.2);
+      line-height: 1.68;
+    }
+
+    .compact-summary-text strong {
+      color: #935930;
+    }
+
+    .focus-real-world-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 0.88rem;
+      color: var(--text-main);
+      background: rgba(244, 238, 230, 0.55);
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(190, 152, 92, 0.2);
+    }
+
+    .focus-real-world-row .focus-title {
+      font-weight: 700;
+      color: #935930;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .compact-summary-teaser-hint {
+      font-size: 0.88rem;
+      color: #8c5738;
+      background: linear-gradient(135deg, rgba(232, 179, 158, 0.22) 0%, rgba(216, 210, 235, 0.24) 100%);
+      border: 1px dashed rgba(190, 152, 92, 0.4);
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      line-height: 1.45;
+    }
+
+    .compact-summary-teaser-hint:hover {
+      background: linear-gradient(135deg, rgba(232, 179, 158, 0.35) 0%, rgba(216, 210, 235, 0.35) 100%);
+      transform: translateX(2px);
+      border-color: var(--accent-gold);
+    }
+
+    .compact-summary-teaser-hint span.teaser-cta-arrow {
+      color: var(--accent-gold);
+      font-weight: 800;
+      white-space: nowrap;
+      margin-left: 6px;
     }
 
     .section-headline {
@@ -536,8 +760,8 @@
         box-shadow: 0 0 0 0 rgba(232, 179, 158, 0.75);
       }
       50% {
-        transform: scale(1.04);
-        box-shadow: 0 0 0 14px rgba(232, 179, 158, 0);
+        transform: scale(1.03);
+        box-shadow: 0 0 0 12px rgba(232, 179, 158, 0);
       }
       100% {
         transform: scale(1);
@@ -550,7 +774,7 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 16px 32px;
+      padding: 16px 30px;
       border-radius: var(--radius-pill);
       background: linear-gradient(135deg, var(--text-main) 0%, #221a2c 100%);
       color: #FFFFFF !important;
@@ -560,29 +784,29 @@
       border: 2px solid var(--accent-gold);
       cursor: pointer;
       text-decoration: none;
-      animation: pulseAttention 2.2s infinite ease-in-out;
+      animation: pulseAttention 2.4s infinite ease-in-out;
       transition: all 0.25s ease;
       white-space: nowrap;
     }
 
     .btn-unlock-tg:hover {
       animation: none;
-      transform: scale(1.05);
+      transform: scale(1.04);
       background: #181220;
       box-shadow: 0 10px 28px rgba(57, 46, 69, 0.35);
     }
 
     /* ========================================================
-       CONVERTING COMMERCIAL OFFER SECTION STYLING
+       STREAMLINED OFFER STYLING
     ======================================================== */
     .offer-card {
-      display: none;
+      display: block;
       background: linear-gradient(180deg, #FFFFFF 0%, #FCFAF7 100%);
       border: 2px solid var(--accent-gold);
       border-radius: var(--radius-card);
-      box-shadow: 0 30px 70px -15px rgba(57, 46, 69, 0.18);
-      padding: 50px 36px;
-      margin: 40px auto 60px;
+      box-shadow: 0 30px 70px -15px rgba(57, 46, 69, 0.16);
+      padding: 44px 34px;
+      margin: 40px auto 40px;
       text-align: left;
       scroll-margin-top: 90px;
       position: relative;
@@ -590,40 +814,25 @@
 
     @media (max-width: 768px) {
       .offer-card {
-        padding: 30px 20px;
+        padding: 28px 18px;
       }
-    }
-
-    .offer-card.active {
-      display: block;
-      animation: unfoldOffer 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    @keyframes unfoldOffer {
-      from { opacity: 0; transform: translateY(24px) scale(0.98); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    .offer-card.highlight-pulse {
-      outline: 4px solid var(--accent-peach);
-      box-shadow: 0 0 50px rgba(232, 179, 158, 0.6);
     }
 
     .offer-badge-wrap {
       display: flex;
       justify-content: center;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .offer-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 20px;
-      background: rgba(190, 152, 92, 0.18);
+      padding: 7px 18px;
+      background: rgba(190, 152, 92, 0.16);
       color: var(--accent-gold);
       font-weight: 700;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       border-radius: var(--radius-pill);
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -632,218 +841,458 @@
     .offer-header-center {
       text-align: center;
       max-width: 820px;
-      margin: 0 auto 36px;
+      margin: 0 auto 30px;
     }
 
     .offer-main-title {
-      font-size: clamp(1.85rem, 3.6vw, 2.7rem);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
       line-height: 1.22;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+    }
+
+    .offer-main-title span.dynamic-year-tag {
+      color: #935930;
+      border-bottom: 2px dashed var(--accent-gold);
+      padding-bottom: 2px;
     }
 
     .offer-sub-lead {
-      font-size: clamp(1.05rem, 2vw, 1.22rem);
+      font-size: clamp(1.02rem, 1.8vw, 1.18rem);
       color: rgba(57, 46, 69, 0.88);
       line-height: 1.55;
     }
 
-    /* Problem / Wake up call block */
-    .offer-pain-box {
-      background: rgba(244, 238, 230, 0.6);
-      border-left: 4px solid var(--accent-peach);
-      border-radius: 14px;
+    .weather-metaphor-box {
+      background: rgba(244, 238, 230, 0.65);
+      border-left: 4px solid var(--accent-gold);
+      border-radius: 16px;
       padding: 22px 24px;
-      margin-bottom: 36px;
+      margin-bottom: 30px;
       font-size: 0.98rem;
       line-height: 1.65;
-      color: var(--text-main);
     }
 
-    .offer-pain-box p + p {
+    .weather-metaphor-box strong {
+      color: #935930;
+    }
+
+    .weather-metaphor-box p + p {
       margin-top: 10px;
     }
 
-    /* Unlimited Killer Feature Banner */
-    .killer-feature-banner {
-      background: linear-gradient(135deg, rgba(216, 210, 235, 0.45) 0%, rgba(182, 200, 177, 0.35) 100%);
-      border: 1.5px solid rgba(190, 152, 92, 0.35);
-      border-radius: var(--radius-inner);
-      padding: 26px 28px;
-      margin-bottom: 40px;
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-    }
-
-    .killer-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: #FFFFFF;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: var(--text-main);
-      font-size: 1.5rem;
-      box-shadow: 0 4px 14px rgba(57, 46, 69, 0.08);
-    }
-
-    .killer-content h4 {
-      font-size: 1.22rem;
-      margin-bottom: 6px;
-    }
-
-    .killer-content p {
-      font-size: 0.94rem;
-      color: rgba(57, 46, 69, 0.85);
-      line-height: 1.55;
-    }
-
-    /* What's Inside Grid */
-    .modules-section-title {
-      text-align: center;
-      margin-bottom: 24px;
-      font-size: 1.65rem;
-    }
-
-    .modules-grid {
+    .practical-pillars-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 18px;
-      margin-bottom: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
     }
 
-    .module-item-card {
+    .pillar-item {
       background: #FFFFFF;
-      border: 1px solid rgba(190, 152, 92, 0.24);
-      border-radius: var(--radius-inner);
-      padding: 24px;
+      border: 1px solid rgba(190, 152, 92, 0.25);
+      border-radius: 16px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
       transition: all 0.25s ease;
     }
 
-    .module-item-card:hover {
+    .pillar-item:hover {
       border-color: var(--accent-gold);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 24px rgba(57, 46, 69, 0.06);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(57, 46, 69, 0.06);
     }
 
-    .module-tag {
-      font-size: 0.76rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--accent-gold);
-      background: rgba(190, 152, 92, 0.12);
-      padding: 3px 10px;
-      border-radius: var(--radius-pill);
-      align-self: flex-start;
+    .pillar-icon {
+      font-size: 1.4rem;
+      margin-bottom: 2px;
     }
 
-    .module-name {
-      font-size: 1.15rem;
-      font-weight: 700;
-    }
-
-    .module-desc {
-      font-size: 0.9rem;
-      color: rgba(57, 46, 69, 0.78);
-      line-height: 1.55;
-    }
-
-    /* Audience Segments Section */
-    .audience-block {
-      background: #FFFFFF;
-      border: 1px solid rgba(190, 152, 92, 0.24);
-      border-radius: var(--radius-inner);
-      padding: 32px 28px;
-      margin-bottom: 40px;
-    }
-
-    .audience-block h4 {
-      font-size: 1.35rem;
-      text-align: center;
-      margin-bottom: 24px;
-    }
-
-    .audience-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 20px;
-    }
-
-    .aud-card {
-      background: rgba(244, 238, 230, 0.45);
-      border-radius: 14px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .aud-title {
-      font-weight: 700;
+    .pillar-title {
       font-size: 1.05rem;
+      font-weight: 700;
       color: var(--text-main);
+    }
+
+    .pillar-desc {
+      font-size: 0.88rem;
+      color: rgba(57, 46, 69, 0.8);
+      line-height: 1.5;
+    }
+
+    .clean-unlimited-card {
+      background: linear-gradient(135deg, rgba(216, 210, 235, 0.4) 0%, rgba(182, 200, 177, 0.3) 100%);
+      border: 1.5px dashed var(--accent-gold);
+      border-radius: 18px;
+      padding: 20px 24px;
+      margin-bottom: 32px;
       display: flex;
       align-items: center;
+      gap: 18px;
+    }
+
+    .clean-unlimited-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    .clean-unlimited-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .clean-unlimited-text {
+      font-size: 0.9rem;
+      color: rgba(57, 46, 69, 0.82);
+      line-height: 1.45;
+    }
+
+    .preview-showcase-box {
+      margin-bottom: 35px;
+      background: #FFFFFF;
+      border: 1px solid rgba(190, 152, 92, 0.28);
+      border-radius: var(--radius-inner);
+      padding: 22px 18px;
+      overflow: hidden;
+    }
+
+    .preview-showcase-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .preview-showcase-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .preview-showcase-sub {
+      font-size: 0.85rem;
+      color: rgba(57, 46, 69, 0.72);
+      margin-top: 2px;
+    }
+
+    .slider-nav-btns {
+      display: flex;
       gap: 8px;
     }
 
-    .aud-text {
-      font-size: 0.88rem;
-      color: rgba(57, 46, 69, 0.78);
-      line-height: 1.5;
+    .btn-slide-nav {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(244, 238, 230, 0.8);
+      border: 1px solid rgba(190, 152, 92, 0.35);
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
 
-    /* Objections FAQ */
-    .objections-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    .btn-slide-nav:hover {
+      background: var(--text-main);
+      color: #FFFFFF;
+      border-color: var(--text-main);
+      transform: scale(1.05);
+    }
+
+    .preview-slider-track {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
       gap: 16px;
-      margin-bottom: 40px;
+      overflow-x: auto !important;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 8px 4px 16px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent-peach) transparent;
+      cursor: grab;
+      user-select: none;
     }
 
-    .objection-card {
+    .preview-slider-track:active {
+      cursor: grabbing;
+    }
+
+    .preview-slider-track::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .preview-slider-track::-webkit-scrollbar-thumb {
+      background: var(--accent-peach);
+      border-radius: var(--radius-pill);
+    }
+
+    .slide-page-card {
+      flex: 0 0 240px !important;
+      width: 240px !important;
+      max-width: 240px;
+      scroll-snap-align: start;
+      background: var(--bg-cream);
+      border: 1px solid rgba(190, 152, 92, 0.25);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 20px rgba(57, 46, 69, 0.06);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      cursor: zoom-in;
+      position: relative;
+    }
+
+    .slide-page-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(57, 46, 69, 0.12);
+      border-color: var(--accent-gold);
+    }
+
+    .zoom-hint-pill {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(57, 46, 69, 0.78);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      backdrop-filter: blur(6px);
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .slide-page-card {
+        flex: 0 0 210px !important;
+        width: 210px !important;
+        max-width: 210px;
+      }
+    }
+
+    .slide-img-wrap {
+      width: 100%;
+      aspect-ratio: 1 / 1.414;
       background: #FFFFFF;
-      border: 1px solid rgba(190, 152, 92, 0.2);
-      border-radius: 14px;
-      padding: 20px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .obj-q {
-      font-size: 0.96rem;
+    .slide-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .slide-page-meta {
+      padding: 10px 14px;
+      background: #FFFFFF;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-main);
+      border-top: 1px solid rgba(190, 152, 92, 0.18);
+    }
+
+    .slider-indicators {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .slider-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(57, 46, 69, 0.2);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .slider-dot.active {
+      width: 22px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-gold);
+    }
+
+    /* INTERACTIVE FAQ ACCORDION */
+    .faq-section-wrapper {
+      margin-bottom: 35px;
+    }
+
+    .faq-title {
+      font-size: 1.3rem;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .faq-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: #FFFFFF;
+      border: 1px solid rgba(190, 152, 92, 0.24);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .faq-item:hover {
+      border-color: var(--accent-gold);
+    }
+
+    .faq-question-btn {
+      width: 100%;
+      padding: 16px 20px;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.98rem;
       font-weight: 700;
       color: var(--text-main);
-      margin-bottom: 6px;
+      transition: background-color 0.2s ease;
     }
 
-    .obj-a {
+    .faq-question-btn:hover {
+      background: rgba(244, 238, 230, 0.4);
+    }
+
+    .faq-icon-indicator {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(190, 152, 92, 0.15);
+      color: var(--accent-gold);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+      transition: transform 0.3s ease, background-color 0.2s ease;
+    }
+
+    .faq-item.open .faq-icon-indicator {
+      transform: rotate(45deg);
+      background: var(--text-main);
+      color: #FFFFFF;
+    }
+
+    .faq-answer-collapse {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .faq-answer-content {
+      padding: 0 20px 18px;
+      font-size: 0.92rem;
+      color: rgba(57, 46, 69, 0.82);
+      line-height: 1.6;
+      border-top: 1px dashed rgba(190, 152, 92, 0.2);
+      padding-top: 12px;
+    }
+
+    /* Savings interactive calculator box */
+    .savings-calculator-box {
+      background: #FFFFFF;
+      border: 1px solid rgba(190, 152, 92, 0.32);
+      border-radius: var(--radius-inner);
+      padding: 18px 20px;
+      margin-bottom: 22px;
+      box-shadow: 0 4px 16px rgba(57, 46, 69, 0.04);
+    }
+
+    .savings-calc-label {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .savings-pills-row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .savings-pill-btn {
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(190, 152, 92, 0.35);
+      background: rgba(244, 238, 230, 0.4);
+      color: var(--text-main);
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Golos Text', sans-serif;
+    }
+
+    .savings-pill-btn.active, .savings-pill-btn:hover {
+      background: var(--text-main);
+      color: #FFFFFF;
+      border-color: var(--text-main);
+    }
+
+    .savings-result-highlight {
       font-size: 0.88rem;
-      color: rgba(57, 46, 69, 0.76);
-      line-height: 1.5;
+      color: #935930;
+      font-weight: 600;
+      background: rgba(232, 179, 158, 0.2);
+      padding: 8px 14px;
+      border-radius: 12px;
+      display: inline-block;
+      line-height: 1.45;
     }
 
-    /* Pricing & Final CTA */
+    /* Pricing & Final CTA Box */
     .final-cta-pricing-box {
       background: linear-gradient(135deg, rgba(232, 179, 158, 0.25) 0%, rgba(216, 210, 235, 0.3) 100%);
       border: 2px solid var(--accent-gold);
       border-radius: 22px;
-      padding: 38px 28px;
+      padding: 36px 26px;
       text-align: center;
       max-width: 650px;
       margin: 0 auto;
       box-shadow: 0 16px 40px rgba(57, 46, 69, 0.08);
-    }
-
-    .anchor-comparison {
-      font-size: 0.95rem;
-      color: rgba(57, 46, 69, 0.82);
-      margin-bottom: 14px;
-      line-height: 1.5;
     }
 
     .price-row {
@@ -851,7 +1300,7 @@
       align-items: baseline;
       justify-content: center;
       gap: 16px;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
 
     .price-old-strike {
@@ -872,7 +1321,7 @@
       font-size: 0.88rem;
       color: #935930;
       font-weight: 600;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .btn-checkout-now {
@@ -881,25 +1330,394 @@
       justify-content: center;
       gap: 12px;
       width: 100%;
-      max-width: 460px;
-      padding: 20px 40px;
+      max-width: 500px;
+      padding: 18px 30px;
       border-radius: var(--radius-pill);
       background: var(--accent-peach);
       color: var(--text-main) !important;
       font-family: 'Manrope', sans-serif;
       font-weight: 800;
-      font-size: 1.18rem;
+      font-size: 1.12rem;
       border: none;
       cursor: pointer;
       text-decoration: none;
       box-shadow: 0 12px 32px rgba(232, 179, 158, 0.6);
       transition: all 0.3s ease;
+      text-align: center;
+      line-height: 1.3;
     }
 
     .btn-checkout-now:hover {
       background: #e2a48c;
       transform: translateY(-3px) scale(1.02);
       box-shadow: 0 18px 40px rgba(232, 179, 158, 0.7);
+    }
+
+    .payment-methods-strip {
+      margin-top: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: rgba(57, 46, 69, 0.75);
+      font-weight: 500;
+    }
+
+    .payment-badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      background: #FFFFFF;
+      border: 1px solid rgba(190, 152, 92, 0.25);
+      border-radius: var(--radius-pill);
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .delivery-clarity-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 1px dashed rgba(190, 152, 92, 0.35);
+      text-align: left;
+    }
+
+    @media (max-width: 600px) {
+      .delivery-clarity-steps {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+    }
+
+    .clarity-step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--text-main);
+      line-height: 1.4;
+    }
+
+    .clarity-step-item span.icon-check {
+      color: #3b6b32;
+      font-weight: 800;
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .personal-help-box {
+      margin-top: 20px;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(190, 152, 92, 0.3);
+      border-radius: 14px;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .personal-help-box a {
+      color: #935930;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* Toast Notification */
+    .toast-notice {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--text-main);
+      color: #FFFFFF;
+      padding: 12px 24px;
+      border-radius: var(--radius-pill);
+      font-size: 0.88rem;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(57, 46, 69, 0.3);
+      z-index: 1000;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      pointer-events: none;
+    }
+
+    .toast-notice.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Mobile Sticky Bar */
+    .mobile-sticky-order-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(190, 152, 92, 0.3);
+      padding: 12px 16px;
+      box-shadow: 0 -8px 24px rgba(57, 46, 69, 0.12);
+      animation: slideUpBar 0.3s ease-out;
+    }
+
+    @keyframes slideUpBar {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    .mobile-sticky-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .sticky-price-meta {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sticky-price-label {
+      font-size: 0.72rem;
+      color: rgba(57, 46, 69, 0.7);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .sticky-price-val {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-main);
+      font-family: 'Manrope', sans-serif;
+      line-height: 1.1;
+    }
+
+    .btn-sticky-buy {
+      padding: 12px 20px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-peach);
+      color: var(--text-main) !important;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 0.92rem;
+      border: none;
+      text-decoration: none;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 14px rgba(232, 179, 158, 0.5);
+    }
+
+    /* Lightbox Modal for Report Pages */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(57, 46, 69, 0.88);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: fadeInModal 0.25s ease-out;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+    }
+
+    @keyframes fadeInModal {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .lightbox-container {
+      position: relative;
+      max-width: 560px;
+      width: 100%;
+      background: #FFFFFF;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(190, 152, 92, 0.4);
+    }
+
+    .lightbox-img-wrap {
+      width: 100%;
+      max-height: 75vh;
+      overflow: hidden;
+      background: #FAFAFA;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-img-wrap img {
+      width: 100%;
+      height: auto;
+      max-height: 75vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .lightbox-footer {
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #FFFFFF;
+      border-top: 1px solid rgba(190, 152, 92, 0.2);
+    }
+
+    .lightbox-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .btn-close-lightbox {
+      background: rgba(57, 46, 69, 0.08);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+
+    .btn-close-lightbox:hover {
+      background: var(--text-main);
+      color: #FFFFFF;
+    }
+
+    /* Exit Intent Modal */
+    .exit-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      background: rgba(57, 46, 69, 0.72);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: fadeInModal 0.25s ease-out;
+    }
+
+    .exit-modal-overlay.active {
+      display: flex;
+    }
+
+    .exit-modal-card {
+      background: #FFFFFF;
+      border-radius: 24px;
+      max-width: 480px;
+      width: 100%;
+      padding: 34px 28px;
+      text-align: center;
+      box-shadow: 0 30px 70px rgba(57, 46, 69, 0.25);
+      border: 2px solid var(--accent-gold);
+      position: relative;
+    }
+
+    .exit-modal-close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(57, 46, 69, 0.06);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--text-main);
+    }
+
+    .exit-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: var(--radius-pill);
+      background: rgba(232, 179, 158, 0.3);
+      color: #935930;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    .exit-modal-title {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+
+    .exit-modal-desc {
+      font-size: 0.92rem;
+      color: rgba(57, 46, 69, 0.82);
+      line-height: 1.5;
+      margin-bottom: 22px;
+    }
+
+    .exit-modal-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-exit-save {
+      padding: 14px 20px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-peach);
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 0.98rem;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 6px 18px rgba(232, 179, 158, 0.5);
+    }
+
+    .btn-exit-close-secondary {
+      padding: 10px;
+      background: none;
+      border: none;
+      font-size: 0.86rem;
+      color: rgba(57, 46, 69, 0.65);
+      cursor: pointer;
+      text-decoration: underline;
     }
 
     footer {
@@ -915,6 +1733,21 @@
       color: var(--text-main);
       margin-bottom: 12px;
     }
+
+    @media print {
+      header, footer, .calc-card, .btn-unlock-tg, .mobile-sticky-order-bar, .matrix-actions-bar, .preview-showcase-box, .slider-nav-btns, .final-cta-pricing-box, .lightbox-modal, .exit-modal-overlay {
+        display: none !important;
+      }
+      body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+      }
+      .results-section, .offer-card {
+        display: block !important;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -924,10 +1757,16 @@
       <div class="brand-mark">
         <span class="brand-title">Оля • Нумерология и нейросети</span>
       </div>
-      <a href="https://t.me/varlamova_matrix" target="_blank" rel="noopener" class="nav-cta-btn">
-        <span>Telegram-канал</span>
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-      </a>
+      <div class="header-actions">
+        <button type="button" onclick="goToOffer()" class="nav-btn-highlight">
+          <span>Открыть полный доступ</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </button>
+        <a href="https://t.me/varlamova_matrix" target="_blank" rel="noopener" class="nav-cta-btn">
+          <span>Telegram-канал</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -942,6 +1781,14 @@
       <p class="hero-desc">
         Точный нумерологический расчет с 1 января по 31 декабря. Узнай, откуда черпать ресурс, в чем скрыт твой потенциал года, какие уроки готовит пространство и как сдать главный экзамен без выгорания.
       </p>
+
+      <div class="hero-actions-row">
+        <button type="button" onclick="goToOffer()" class="btn-hero-offer">
+          <span>✦ Открыть полный доступ к навигатору</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </div>
+
       <div class="hero-features">
         <span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
@@ -986,7 +1833,7 @@
           </button>
         </div>
       </form>
-      <p class="calc-meta-hint">✦ Расчет занимает мгновение. Ваши данные конфиденциальны и не отправляются на сервера.</p>
+      <p class="calc-meta-hint">✦ Расчет занимает мгновение. Ваши данные конфиденциальны и не отправляются на серверы.</p>
     </section>
 
     <!-- RESULTS SECTION (HIDDEN INITIALLY) -->
@@ -996,6 +1843,10 @@
       <div class="matrix-display-card">
         <h2 class="matrix-title-meta font-heading" id="resultYearHeading">Годовая Матрица</h2>
         <p class="matrix-subtitle-meta" id="resultBirthMeta">Дата рождения: ... • Аркан года: ...</p>
+        
+        <div class="matrix-interactive-hint">
+          <span>👆 Нажмите на любой кружок ромба, чтобы перейти к его значению</span>
+        </div>
 
         <div class="matrix-svg-container">
           <svg class="diamond-svg" viewBox="0 0 460 460" xmlns="http://www.w3.org/2000/svg">
@@ -1004,64 +1855,76 @@
             <line x1="230" y1="70" x2="230" y2="390" stroke="#BE985C" stroke-width="1.2" opacity="0.45" stroke-dasharray="4 4" />
 
             <!-- Point Talent (Top) -->
-            <g class="matrix-node">
+            <g class="matrix-node" onclick="scrollToPositionRow('b1')">
               <circle cx="230" cy="70" r="32" fill="#D8D2EB" />
               <text id="svg-b1" class="node-label-val" x="230" y="70" fill="#392E45">-</text>
               <text x="230" y="24" text-anchor="middle" class="node-label-sub">Талант</text>
             </g>
 
             <!-- Point Resource (Left) -->
-            <g class="matrix-node">
+            <g class="matrix-node" onclick="scrollToPositionRow('a1')">
               <circle cx="70" cy="230" r="32" fill="#D8D2EB" />
               <text id="svg-a1" class="node-label-val" x="70" y="230" fill="#392E45">-</text>
               <text x="70" y="280" text-anchor="middle" class="node-label-sub">Ресурс</text>
             </g>
 
             <!-- Point Lesson (Right) -->
-            <g class="matrix-node">
+            <g class="matrix-node" onclick="scrollToPositionRow('v1')">
               <circle cx="390" cy="230" r="32" fill="#F8C6B5" />
               <text id="svg-v1" class="node-label-val" x="390" y="230" fill="#392E45">-</text>
               <text x="390" y="280" text-anchor="middle" class="node-label-sub">Урок</text>
             </g>
 
             <!-- Point Exam (Bottom) -->
-            <g class="matrix-node">
+            <g class="matrix-node" onclick="scrollToPositionRow('g1')">
               <circle cx="230" cy="390" r="32" fill="#F8C6B5" />
               <text id="svg-g1" class="node-label-val" x="230" y="390" fill="#392E45">-</text>
               <text x="230" y="440" text-anchor="middle" class="node-label-sub">Экзамен</text>
             </g>
 
             <!-- Point Essence (Center) -->
-            <g class="matrix-node">
+            <g class="matrix-node" onclick="scrollToPositionRow('ya1')">
               <circle cx="230" cy="230" r="34" fill="#B6C8B1" />
-              <text id="svg-ya1" class="node-label-val" x="230" y="230" fill="#FFFFFF">-</text>
-              <text x="230" y="200" text-anchor="middle" class="node-label-sub" style="font-weight: 700;">Суть года</text>
+              <text id="svg-ya1" class="node-label-val" x="230" y="230" fill="#392E45">-</text>
+              <text x="230" y="186" text-anchor="middle" class="node-label-sub" style="font-weight: 700;">Суть года</text>
             </g>
           </svg>
         </div>
 
         <!-- Quick Badges -->
         <div class="positions-quick-nav">
-          <div class="pos-quick-badge">
+          <div class="pos-quick-badge" onclick="scrollToPositionRow('a1')">
             <span class="circle-tag" style="background: #D8D2EB;"></span>
             <span>Ресурс: <b id="badge-val-a1">-</b></span>
           </div>
-          <div class="pos-quick-badge">
+          <div class="pos-quick-badge" onclick="scrollToPositionRow('b1')">
             <span class="circle-tag" style="background: #D8D2EB;"></span>
             <span>Талант: <b id="badge-val-b1">-</b></span>
           </div>
-          <div class="pos-quick-badge">
+          <div class="pos-quick-badge" onclick="scrollToPositionRow('v1')">
             <span class="circle-tag" style="background: #F8C6B5;"></span>
             <span>Урок: <b id="badge-val-v1">-</b></span>
           </div>
-          <div class="pos-quick-badge">
+          <div class="pos-quick-badge" onclick="scrollToPositionRow('g1')">
             <span class="circle-tag" style="background: #F8C6B5;"></span>
             <span>Экзамен: <b id="badge-val-g1">-</b></span>
           </div>
-          <div class="pos-quick-badge">
+          <div class="pos-quick-badge" onclick="scrollToPositionRow('ya1')">
             <span class="circle-tag" style="background: #B6C8B1;"></span>
             <span>Суть года: <b id="badge-val-ya1">-</b></span>
           </div>
+        </div>
+
+        <!-- Share & Save Bar -->
+        <div class="matrix-actions-bar">
+          <button type="button" class="btn-action-tool" onclick="copyResultShareLink()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+            <span>Скопировать ссылку на результат</span>
+          </button>
+          <button type="button" class="btn-action-tool" onclick="window.print()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            <span>Распечатать карту</span>
+          </button>
         </div>
       </div>
 
@@ -1079,8 +1942,8 @@
               </svg>
             </div>
             <div>
-              <div class="unlock-access-title">Хотите получить полный разбор всех 5 позиций года?</div>
-              <div class="unlock-access-sub">Глубокие стратегии, чек-листы по плюсу/минусу и проверочные вопросы</div>
+              <div class="unlock-access-title">Хотите получить полный маршрут по всем 5 позициям года?</div>
+              <div class="unlock-access-sub">Глубокие стратегии действий, защита от выгорания и поквартальный план</div>
             </div>
           </div>
           <button type="button" onclick="goToOffer()" class="btn-unlock-tg">
@@ -1126,148 +1989,342 @@
       </section>
 
       <!-- ========================================================
-           FULL HIGH-CONVERSION COMMERCIAL OFFER SECTION
+           STREAMLINED, HUMAN & ACTION-FOCUSED COMMERCIAL OFFER
       ======================================================== -->
       <section class="offer-card" id="fullAccessOffer">
         <div class="offer-badge-wrap">
-          <div class="offer-badge">✦ Персональный навигатор на 365 дней</div>
+          <div class="offer-badge" id="dynamicOfferBadge">✦ Навигатор на 365 дней</div>
         </div>
 
         <div class="offer-header-center">
-          <h3 class="offer-main-title font-heading">
-            «Матрица года: Твой личный маршрут»
+          <h3 class="offer-main-title font-heading" id="dynamicOfferTitle">
+            «Матрица года: Твой персональный маршрут»
           </h3>
-          <p class="offer-sub-lead">
-            Спокойная ясность вместо тревоги и суеты. Понятная инструкция к своему состоянию: где вовремя приложить усилия, а где бережно притормозить, чтобы сохранить себя, деньги и важные отношения.
+          <p class="offer-sub-lead" id="dynamicOfferSubtitle">
+            Прогноз работает лучше всего тогда, когда действуешь ты. Понятная инструкция к своему состоянию: где приложить усилия для максимального результата, а где вовремя притормозить.
           </p>
         </div>
 
-        <!-- Mirroring Real Pain & Frustration -->
-        <div class="offer-pain-box">
+        <!-- The Weather Metaphor: Real Life, Accountability & Peace -->
+        <div class="weather-metaphor-box">
           <p>
-            <strong>Знакомо ощущение растерянности?</strong> В начале года мы строим большие планы, но уже через пару месяцев силы заканчиваются, дела буксуют, а вместо вдохновения накапливается усталость и самоедство.
+            <strong>Знакомо ощущение, когда пашешь на пределе, а результата нет?</strong> Вкладываешь тонну сил, не спишь ночами, но упираешься в стену. А потом накапливается самоедство: <em>«Наверное, со мной что-то не так»</em>.
           </p>
           <p>
-            <strong>Дело не в вашей неорганизованности.</strong> Просто порой мы пытаемся бежать марафон в период, когда организму и психике нужно восстановиться, укрепить фундамент или побыть с близкими. Матрица не сделает выбор за вас — она даёт честную систему координат, чтобы вы двигались в согласии со своими ритмами, а не на износ.
+            С вами всё так. Просто глупо пытаться бежать марафон или загорать в разгар грозы. Матрица года — это как <strong>точный прогноз погоды</strong>. Она не проживёт жизнь за вас и не принесёт чудес на блюдечке. Но она скажет, когда за окном шторм (и нужно взять зонт и сберечь силы), а когда светит солнце — и ваши действия принесут максимальные плоды.
           </p>
         </div>
 
-        <!-- Unlimited Killer Feature -->
-        <div class="killer-feature-banner">
-          <div class="killer-icon">✦</div>
-          <div class="killer-content">
-            <h4 class="font-heading">Практичный инструмент для всей семьи без ограничений</h4>
-            <p>
-              Вы получаете доступ не к разовой шпаргалке, а к удобному сервису для жизни. Анализируйте любые периоды: прошлые годы (чтобы прояснить причины кризисов и отпустить обиды) или предстоящие шаги для <strong>себя, близких, детей или клиентов</strong> в любое удобное время.
-            </p>
-          </div>
-        </div>
-
-        <!-- Value Modules Grid -->
-        <h4 class="modules-section-title font-heading">Что входит в полный навигатор по вашему году:</h4>
-        <div class="modules-grid">
-          <div class="module-item-card">
-            <span class="module-tag">Энергия</span>
-            <div class="module-name font-heading">1. Источник ресурса и баланс</div>
-            <p class="module-desc">
-              Что естественным образом возвращает вам силы, устойчивость и интерес к жизни. Где скрываются привычки, незаметно истощающие эмоциональный фон.
-            </p>
-          </div>
-
-          <div class="module-item-card">
-            <span class="module-tag">Дела и финансы</span>
-            <div class="module-name font-heading">2. Финансовые ориентиры</div>
-            <p class="module-desc">
-              Спокойный аудит возможностей: где сейчас разумнее развиваться, когда стоит вкладываться в долгосрочные шаги, а где проявить осмотрительность и защитить бюджет.
-            </p>
-          </div>
-
-          <div class="module-item-card">
-            <span class="module-tag">Отношения</span>
-            <div class="module-name font-heading">3. Близкие союзы и диалог</div>
-            <p class="module-desc">
-              Как выстраивать контакт с партнёром без взаимных претензий и давления. На что опереться в периоды недопонимания и как сохранить тепло в семье.
-            </p>
-          </div>
-
-          <div class="module-item-card">
-            <span class="module-tag">Осознанность</span>
-            <div class="module-name font-heading">4. Зоны внимания и экзамен года</div>
-            <p class="module-desc">
-              Точки внутреннего роста и повторяющиеся сценарии. Проверочные вопросы для честного разговора с собой, помогающие принимать взвешенные решения без паники.
-            </p>
-          </div>
-
-          <div class="module-item-card">
-            <span class="module-tag">Тело и самочувствие</span>
-            <div class="module-name font-heading">5. Бережность к себе</div>
-            <p class="module-desc">
-              Сигналы перегрузки, на которые важно обращать внимание заранее. Мягкие телесные и восстановительные привычки для поддержания крепкого тонуса.
-            </p>
-          </div>
-
-          <div class="module-item-card">
-            <span class="module-tag">Формат</span>
-            <div class="module-name font-heading">6. Готовый конспект в PDF</div>
-            <p class="module-desc">
-              Удобный структурированный буклет для печати или спокойного перечитывания с планшета и телефона в течение всех 365 дней.
-            </p>
-          </div>
-        </div>
-
-        <!-- Audience Segments -->
-        <div class="audience-block">
-          <h4 class="font-heading">Кому этот подход будет особенно полезен:</h4>
-          <div class="audience-grid">
-            <div class="aud-card">
-              <div class="aud-title">💼 В работе и собственном деле</div>
-              <div class="aud-text">
-                Перестать выгорать в попытке успеть всё и сразу. Понять общий контекст периода, расставить приоритеты и распределять свои силы равномерно.
-              </div>
+        <!-- 4 Practical Pillars of the Guide -->
+        <div class="practical-pillars-grid">
+          <div class="pillar-item">
+            <div class="pillar-icon">🔋</div>
+            <div class="pillar-title">Где черпать силы</div>
+            <div class="pillar-desc">
+              Точный список действий, заряжающих именно вашу батарейку, и бытовые ловушки, незаметно сливающие ресурс в ноль.
             </div>
-            <div class="aud-card">
-              <div class="aud-title">❤️ В семье и близких отношениях</div>
-              <div class="aud-text">
-                Лучше понимать внутренние состояния близких, бережно поддерживать партнёра в периоды перемен и вовремя находить нужные слова.
-              </div>
+          </div>
+
+          <div class="pillar-item">
+            <div class="pillar-icon">🎯</div>
+            <div class="pillar-title">Фокус в деньгах и делах</div>
+            <div class="pillar-desc">
+              Куда направить рабочее внимание: когда благоприятно заходить в масштаб, а когда защитить тылы и заложить фундамент.
             </div>
-            <div class="aud-card">
-              <div class="aud-title">🔮 Практикам и помогающим специалистам</div>
-              <div class="aud-text">
-                Использовать сервис как глубокую основу для консультаций и бесед с клиентами, экономя время на рутине и подсвечивая ключевые темы.
-              </div>
+          </div>
+
+          <div class="pillar-item">
+            <div class="pillar-icon">🤝</div>
+            <div class="pillar-title">Контакт с близкими</div>
+            <div class="pillar-desc">
+              Как выстраивать общение без взаимных претензий, понимать эмоциональный фон партнера и сохранять тепло в доме.
+            </div>
+          </div>
+
+          <div class="pillar-item">
+            <div class="pillar-icon">🛡️</div>
+            <div class="pillar-title">Личный экзамен года</div>
+            <div class="pillar-desc">
+              Зоны проверок судьбы и ловушки ума. Вопросы для честного разговора с собой, помогающие обойти кризисы стороной.
             </div>
           </div>
         </div>
 
-        <!-- Objections Handling -->
-        <div class="objections-grid">
-          <div class="objection-card">
-            <div class="obj-q">«Это предсказание судьбы или гадание?»</div>
-            <div class="obj-a">
-              Нет. Это система архетипов и психологических ориентиров. Сервис не программирует будущее, а помогает взглянуть на свою жизнь шире и осознаннее.
+        <!-- Unlimited Access for Family (Clear & Simple) -->
+        <div class="clean-unlimited-card">
+          <div class="clean-unlimited-icon">🎁</div>
+          <div>
+            <div class="clean-unlimited-title font-heading">Один доступ навсегда — для вас и всей семьи</div>
+            <div class="clean-unlimited-text">
+              Вы покупаете не разовый расчет, а полноценный инструмент. Считайте любые периоды без ограничений: проверяйте прошлые кризисы и составляйте навигаторы мужу, детям, родителям или подругам в качестве полезного подарка.
             </div>
           </div>
-          <div class="objection-card">
-            <div class="obj-q">«А если период окажется сложным?»</div>
-            <div class="obj-a">
-              В году нет «плохих» энергий. Любой экзамен — это просто точка созревания. Понимая задачу периода, вы проходите её устойчиво и без лишнего стресса.
+        </div>
+
+        <!-- Slider with example report pages & Zoom Lightbox -->
+        <div class="preview-showcase-box">
+          <div class="preview-showcase-header">
+            <div>
+              <div class="preview-showcase-title font-heading">Как оформлен ваш персональный отчет</div>
+              <div class="preview-showcase-sub">14 структурированных страниц на весь год (нажмите на страницу для увеличения)</div>
+            </div>
+            <div class="slider-nav-btns">
+              <button type="button" class="btn-slide-nav" onclick="slidePreview(-1)" aria-label="Назад">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              </button>
+              <button type="button" class="btn-slide-nav" onclick="slidePreview(1)" aria-label="Вперед">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
             </div>
           </div>
-          <div class="objection-card">
-            <div class="obj-q">«Гарантирует ли сервис результат?»</div>
-            <div class="obj-a">
-              Сервис даёт точную карту и подсвечивает дорогу, но шаги по ней делаете только вы. Результат всегда рождается из ваших реальных действий и бережного выбора себя.
+
+          <div class="preview-slider-track" id="previewSliderTrack">
+            <!-- Page 1 -->
+            <div class="slide-page-card" onclick="openLightbox('https://i.postimg.cc/HsnzRg1F/photo-2026-10-16-17-23-50.jpg', 'Страница 1: Титульный лист навигатора')">
+              <span class="zoom-hint-pill">🔍 Увеличить</span>
+              <div class="slide-img-wrap">
+                <img src="https://i.postimg.cc/HsnzRg1F/photo-2026-10-16-17-23-50.jpg" alt="Страница 1" loading="lazy" onerror="this.src='https://placehold.co/400x560/F4EEE6/392E45?text=Страница+1'">
+              </div>
+              <div class="slide-page-meta">
+                <span>Страница 1</span>
+                <span>Титульный лист</span>
+              </div>
             </div>
+
+            <!-- Page 2 -->
+            <div class="slide-page-card" onclick="openLightbox('https://i.postimg.cc/MTzbDkDz/photo-2026-10-16-17-23-50-(2).jpg', 'Страница 2: Навигатор года и методология')">
+              <span class="zoom-hint-pill">🔍 Увеличить</span>
+              <div class="slide-img-wrap">
+                <img src="https://i.postimg.cc/MTzbDkDz/photo-2026-10-16-17-23-50-(2).jpg" alt="Страница 2" loading="lazy" onerror="this.src='https://placehold.co/400x560/F4EEE6/392E45?text=Страница+2'">
+              </div>
+              <div class="slide-page-meta">
+                <span>Страница 2</span>
+                <span>Навигатор года</span>
+              </div>
+            </div>
+
+            <!-- Page 3 -->
+            <div class="slide-page-card" onclick="openLightbox('https://i.postimg.cc/Y0qRpcG1/photo-2026-10-16-17-23-51-(2).jpg', 'Страница 3: Интерактивная карта энергий')">
+              <span class="zoom-hint-pill">🔍 Увеличить</span>
+              <div class="slide-img-wrap">
+                <img src="https://i.postimg.cc/Y0qRpcG1/photo-2026-10-16-17-23-51-(2).jpg" alt="Страница 3" loading="lazy" onerror="this.src='https://placehold.co/400x560/F4EEE6/392E45?text=Страница+3'">
+              </div>
+              <div class="slide-page-meta">
+                <span>Страница 3</span>
+                <span>Карта энергий</span>
+              </div>
+            </div>
+
+            <!-- Page 4 -->
+            <div class="slide-page-card" onclick="openLightbox('https://i.postimg.cc/xdMt53VX/photo-2026-10-16-17-23-51-(3).jpg', 'Страница 4: Источники сил и ресурса')">
+              <span class="zoom-hint-pill">🔍 Увеличить</span>
+              <div class="slide-img-wrap">
+                <img src="https://i.postimg.cc/xdMt53VX/photo-2026-10-16-17-23-51-(3).jpg" alt="Страница 4" loading="lazy" onerror="this.src='https://placehold.co/400x560/F4EEE6/392E45?text=Страница+4'">
+              </div>
+              <div class="slide-page-meta">
+                <span>Страница 4</span>
+                <span>Ресурс и силы</span>
+              </div>
+            </div>
+
+            <!-- Page 5 -->
+            <div class="slide-page-card" onclick="openLightbox('https://i.postimg.cc/X71HYvg5/photo-2026-10-16-17-23-51.jpg', 'Страница 5: Скрытый потенциал и таланты')">
+              <span class="zoom-hint-pill">🔍 Увеличить</span>
+              <div class="slide-img-wrap">
+                <img src="https://i.postimg.cc/X71HYvg5/photo-2026-10-16-17-23-51.jpg" alt="Страница 5" loading="lazy" onerror="this.src='https://placehold.co/400x560/F4EEE6/392E45?text=Страница+5'">
+              </div>
+              <div class="slide-page-meta">
+                <span>Страница 5</span>
+                <span>Потенциал года</span>
+              </div>
+            </div>
+
+            <!-- Page 6 -->
+            <div class="slide-page-card" onclick="openLightbox('https://i.postimg.cc/MZD3g5Mp/photo-2026-10-16-17-23-52-(2).jpg', 'Страница 6: Урок года и стратегия действий')">
+              <span class="zoom-hint-pill">🔍 Увеличить</span>
+              <div class="slide-img-wrap">
+                <img src="https://i.postimg.cc/MZD3g5Mp/photo-2026-10-16-17-23-52-(2).jpg" alt="Страница 6" loading="lazy" onerror="this.src='https://placehold.co/400x560/F4EEE6/392E45?text=Страница+6'">
+              </div>
+              <div class="slide-page-meta">
+                <span>Страница 6</span>
+                <span>Урок и стратегия</span>
+              </div>
+            </div>
+
+            <!-- Page 7 -->
+            <div class="slide-page-card" onclick="openLightbox('https://i.postimg.cc/C1CrhHcQ/photo-2026-10-16-17-23-52.jpg', 'Страница 7: Главный экзамен года')">
+              <span class="zoom-hint-pill">🔍 Увеличить</span>
+              <div class="slide-img-wrap">
+                <img src="https://i.postimg.cc/C1CrhHcQ/photo-2026-10-16-17-23-52.jpg" alt="Страница 7" loading="lazy" onerror="this.src='https://placehold.co/400x560/F4EEE6/392E45?text=Страница+7'">
+              </div>
+              <div class="slide-page-meta">
+                <span>Страница 7</span>
+                <span>Экзамен года</span>
+              </div>
+            </div>
+
+            <!-- Page 8 -->
+            <div class="slide-page-card" onclick="openLightbox('https://i.postimg.cc/GmN5qpBv/photo-2026-10-16-17-23-53-(2).jpg', 'Страница 8: Точки роста и техника безопасности')">
+              <span class="zoom-hint-pill">🔍 Увеличить</span>
+              <div class="slide-img-wrap">
+                <img src="https://i.postimg.cc/GmN5qpBv/photo-2026-10-16-17-23-53-(2).jpg" alt="Страница 8" loading="lazy" onerror="this.src='https://placehold.co/400x560/F4EEE6/392E45?text=Страница+8'">
+              </div>
+              <div class="slide-page-meta">
+                <span>Страница 8</span>
+                <span>Точки роста</span>
+              </div>
+            </div>
+
+            <!-- Page 9 -->
+            <div class="slide-page-card" onclick="openLightbox('https://i.postimg.cc/GhLVpVnw/photo-2026-10-16-17-23-53.jpg', 'Страница 9: Событийные маркеры и ключи')">
+              <span class="zoom-hint-pill">🔍 Увеличить</span>
+              <div class="slide-img-wrap">
+                <img src="https://i.postimg.cc/GhLVpVnw/photo-2026-10-16-17-23-53.jpg" alt="Страница 9" loading="lazy" onerror="this.src='https://placehold.co/400x560/F4EEE6/392E45?text=Страница+9'">
+              </div>
+              <div class="slide-page-meta">
+                <span>Страница 9</span>
+                <span>Событийные маркеры</span>
+              </div>
+            </div>
+
+            <!-- Page 10 -->
+            <div class="slide-page-card" onclick="openLightbox('https://i.postimg.cc/0jf4fdm6/photo-2026-10-16-17-23-54-(2).jpg', 'Страница 10: Финансы, инвестиции и баланс')">
+              <span class="zoom-hint-pill">🔍 Увеличить</span>
+              <div class="slide-img-wrap">
+                <img src="https://i.postimg.cc/0jf4fdm6/photo-2026-10-16-17-23-54-(2).jpg" alt="Страница 10" loading="lazy" onerror="this.src='https://placehold.co/400x560/F4EEE6/392E45?text=Страница+10'">
+              </div>
+              <div class="slide-page-meta">
+                <span>Страница 10</span>
+                <span>Финансы и дела</span>
+              </div>
+            </div>
+
+            <!-- Page 11 -->
+            <div class="slide-page-card" onclick="openLightbox('https://i.postimg.cc/q7PWM74x/photo-2026-10-16-17-23-54.jpg', 'Страница 11: Отношения, диалог и семья')">
+              <span class="zoom-hint-pill">🔍 Увеличить</span>
+              <div class="slide-img-wrap">
+                <img src="https://i.postimg.cc/q7PWM74x/photo-2026-10-16-17-23-54.jpg" alt="Страница 11" loading="lazy" onerror="this.src='https://placehold.co/400x560/F4EEE6/392E45?text=Страница+11'">
+              </div>
+              <div class="slide-page-meta">
+                <span>Страница 11</span>
+                <span>Отношения и баланс</span>
+              </div>
+            </div>
+
+            <!-- Page 12 -->
+            <div class="slide-page-card" onclick="openLightbox('https://i.postimg.cc/2S5s0J01/photo-2026-10-16-17-23-55-(2).jpg', 'Страница 12: Самочувствие, психосоматика и тонус')">
+              <span class="zoom-hint-pill">🔍 Увеличить</span>
+              <div class="slide-img-wrap">
+                <img src="https://i.postimg.cc/2S5s0J01/photo-2026-10-16-17-23-55-(2).jpg" alt="Страница 12" loading="lazy" onerror="this.src='https://placehold.co/400x560/F4EEE6/392E45?text=Страница+12'">
+              </div>
+              <div class="slide-page-meta">
+                <span>Страница 12</span>
+                <span>Здоровье и ресурс</span>
+              </div>
+            </div>
+
+            <!-- Page 13 -->
+            <div class="slide-page-card" onclick="openLightbox('https://i.postimg.cc/nrYyWt8D/photo-2026-10-16-17-23-55.jpg', 'Страница 13: Поквартальный роадмап на год')">
+              <span class="zoom-hint-pill">🔍 Увеличить</span>
+              <div class="slide-img-wrap">
+                <img src="https://i.postimg.cc/nrYyWt8D/photo-2026-10-16-17-23-55.jpg" alt="Страница 13" loading="lazy" onerror="this.src='https://placehold.co/400x560/F4EEE6/392E45?text=Страница+13'">
+              </div>
+              <div class="slide-page-meta">
+                <span>Страница 13</span>
+                <span>Поквартальный план</span>
+              </div>
+            </div>
+
+            <!-- Page 14 -->
+            <div class="slide-page-card" onclick="openLightbox('https://i.postimg.cc/cL4SV6LH/photo-2026-10-16-17-23-56.jpg', 'Страница 14: Годовой чек-лист и главные итоги')">
+              <span class="zoom-hint-pill">🔍 Увеличить</span>
+              <div class="slide-img-wrap">
+                <img src="https://i.postimg.cc/cL4SV6LH/photo-2026-10-16-17-23-56.jpg" alt="Страница 14" loading="lazy" onerror="this.src='https://placehold.co/400x560/F4EEE6/392E45?text=Страница+14'">
+              </div>
+              <div class="slide-page-meta">
+                <span>Страница 14</span>
+                <span>Итоги и чек-лист</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Pagination Dots -->
+          <div class="slider-indicators" id="sliderDotsTrack"></div>
+        </div>
+
+        <!-- INTERACTIVE FAQ ACCORDION -->
+        <div class="faq-section-wrapper">
+          <h4 class="faq-title font-heading">Частые вопросы перед открытием доступа</h4>
+          <div class="faq-accordion" id="faqAccordion">
+            
+            <div class="faq-item">
+              <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+                <span>Это предсказание судьбы или эзотерическое гадание?</span>
+                <span class="faq-icon-indicator">+</span>
+              </button>
+              <div class="faq-answer-collapse">
+                <div class="faq-answer-content">
+                  Нет. Здесь нет гаданий и фатализма. Это прикладная система ориентиров и архетипов. Она не программирует ваше будущее, а помогает взглянуть на свою жизнь шире, осознать слепые зоны и принимать взрослые, взвешенные решения без паники.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+                <span>А если расчет покажет сложный год или кризис?</span>
+                <span class="faq-icon-indicator">+</span>
+              </button>
+              <div class="faq-answer-collapse">
+                <div class="faq-answer-content">
+                  В матрице нет «плохих» периодов. Экзамен года — это просто точка созревания личности. Когда вы заранее понимаете, где тонко, вы проходите период спокойно, без надрыва и забираете ценный опыт вместо стресса.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+                <span>Смогу ли я рассчитать другие даты и года близких?</span>
+                <span class="faq-icon-indicator">+</span>
+              </button>
+              <div class="faq-answer-collapse">
+                <div class="faq-answer-content">
+                  Да! Доступ выдается без ограничений по количеству расчетов. Вы можете проверить прошедшие годы, чтобы понять причины кризисов, а также составить карты на будущие периоды для себя, партнера, детей или родителей.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+                <span>В каком виде я получу навигатор и как оплатить?</span>
+                <span class="faq-icon-indicator">+</span>
+              </button>
+              <div class="faq-answer-collapse">
+                <div class="faq-answer-content">
+                  Сразу после успешной оплаты на экране откроется персональный доступ к сервису, а ссылка продублируется вам. Вы сможете сразу изучать расшифровки онлайн с любого телефона или ноутбука, а также скачать готовый конспект в формате PDF. Сервис принимает карты РФ, СБП и зарубежные карты.
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
         <!-- Pricing & Final Action Button -->
-        <div class="final-cta-pricing-box">
-          <p class="anchor-comparison">
-            Индивидуальный годовой разбор у специалиста обычно стоит <strong>от 7 000 до 25 000 ₽</strong> за одну сессию.<br>
-            Вы получаете <strong>самостоятельный навигатор для себя и близких</strong> с бессрочным доступом:
-          </p>
+        <div class="final-cta-pricing-box" id="finalPricingBox">
+          
+          <!-- Interactive Family Savings Mini-Calculator -->
+          <div class="savings-calculator-box">
+            <div class="savings-calc-label">
+              <span>💡 Посчитайте вашу выгоду от безлимитного доступа:</span>
+            </div>
+            <div class="savings-pills-row">
+              <button type="button" class="savings-pill-btn" onclick="updateSavingsTier(1, this)">1 человек (для себя)</button>
+              <button type="button" class="savings-pill-btn active" onclick="updateSavingsTier(3, this)">3 человека (семья / пара)</button>
+              <button type="button" class="savings-pill-btn" onclick="updateSavingsTier(5, this)">5+ (близкие и клиенты)</button>
+            </div>
+            <div class="savings-result-highlight" id="savingsResultText">
+              Вместо ~21 000 ₽ за 3 индивидуальные сессии у нумеролога — вы платите всего 1 990 ₽ один раз за всю семью
+            </div>
+          </div>
 
           <div class="price-row">
             <span class="price-old-strike">3 990 ₽</span>
@@ -1278,20 +2335,101 @@
           </div>
 
           <a href="https://payform.ru/f8cOOe3/" target="_blank" rel="noopener" class="btn-checkout-now" id="paymentLinkBtn">
-            <span>Получить полный навигатор</span>
+            <span id="paymentBtnDynamicText">Получить полный навигатор на год</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
           </a>
-          <p style="margin-top: 14px; font-size: 0.8rem; color: rgba(57, 46, 69, 0.65);">
-            ✦ Доступ ко всем материалам и расчётам открывается сразу после оформления
-          </p>
+
+          <!-- Payment methods clarity tags -->
+          <div class="payment-methods-strip">
+            <span class="payment-badge-tag">💳 Карты РФ</span>
+            <span class="payment-badge-tag">⚡ СБП</span>
+            <span class="payment-badge-tag">🌍 Зарубежные карты</span>
+            <span class="payment-badge-tag">🔒 Безопасный платёж</span>
+          </div>
+
+          <!-- Transparent 3-step Delivery Process -->
+          <div class="delivery-clarity-steps">
+            <div class="clarity-step-item">
+              <span class="icon-check">✓</span>
+              <div><strong>Мгновенно:</strong> доступ открывается сразу после оплаты</div>
+            </div>
+            <div class="clarity-step-item">
+              <span class="icon-check">✓</span>
+              <div><strong>Навсегда:</strong> сохраняется без абонентской платы</div>
+            </div>
+            <div class="clarity-step-item">
+              <span class="icon-check">✓</span>
+              <div><strong>С любого экрана:</strong> телефон, планшет или ноутбук</div>
+            </div>
+          </div>
+
+          <!-- Personal Telegram Support Badge -->
+          <div class="personal-help-box">
+            <span>💬 Сомневаетесь или возникли вопросы по оплате?</span>
+            <a href="https://t.me/ovaplamova" target="_blank" rel="noopener">Напишите мне лично в Telegram: @ovaplamova</a>
+          </div>
         </div>
       </section>
 
     </section>
   </main>
+
+  <!-- Sticky Mobile Bottom Bar -->
+  <div class="mobile-sticky-order-bar" id="mobileStickyBar">
+    <div class="mobile-sticky-inner">
+      <div class="sticky-price-meta">
+        <span class="sticky-price-label">Спеццена</span>
+        <span class="sticky-price-val">1 990 ₽</span>
+      </div>
+      <a href="https://payform.ru/f8cOOe3/" target="_blank" rel="noopener" class="btn-sticky-buy" id="mobileStickyBtn">
+        <span id="mobileStickyBtnText">Получить доступ</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Lightbox Modal for Report Pages -->
+  <div class="lightbox-modal" id="pageLightboxModal" onclick="closeLightboxOnBackdrop(event)">
+    <div class="lightbox-container">
+      <div class="lightbox-img-wrap">
+        <img id="lightboxImg" src="" alt="Страница руководства">
+      </div>
+      <div class="lightbox-footer">
+        <span class="lightbox-title" id="lightboxTitle">Страница отчета</span>
+        <button type="button" class="btn-close-lightbox" onclick="closeLightbox()" aria-label="Закрыть">✕</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exit Intent Modal -->
+  <div class="exit-modal-overlay" id="exitModalOverlay" onclick="closeExitModalOnBackdrop(event)">
+    <div class="exit-modal-card">
+      <button type="button" class="exit-modal-close-btn" onclick="closeExitModal()">✕</button>
+      <div class="exit-badge-pill">✦ Сохраните ваш результат</div>
+      <h3 class="exit-modal-title font-heading" id="exitModalTitle">Не потеряйте вашу карту года!</h3>
+      <p class="exit-modal-desc" id="exitModalDesc">
+        Вы уже рассчитали ключевые точки своего периода. Скопируйте ссылку на этот расчет, чтобы вернуться к нему в любое время, или откройте полный навигатор со скидкой.
+      </p>
+      <div class="exit-modal-actions">
+        <button type="button" class="btn-exit-save" onclick="copyExitLinkAndNotify()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+          <span>Скопировать ссылку на мой расчет</span>
+        </button>
+        <button type="button" class="btn-exit-close-secondary" onclick="goToOffer(); closeExitModal();">
+          Посмотреть условия полного навигатора за 1 990 ₽ →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notification -->
+  <div class="toast-notice" id="toastNotice">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span id="toastMessage">Ссылка на результат скопирована!</span>
+  </div>
 
   <footer>
     <div class="container">
@@ -1327,27 +2465,328 @@
       18: "Луна", 19: "Солнце", 20: "Страшный Суд", 21: "Мир", 22: "Шут"
     };
 
+    // Глубокая база: 1. Крючок узнавания состояния (Current State Hook), 2. Сигнал карты, 3. Фокус (Деньги & Отношения), 4. Открытый вопрос тизера (Open Loop)
     const BRIEF_ARCANES = {
-      3: { res: "уход за собой, уют, женские круги, комфорт", tal: "женственность, взращивание проектов, доход", les: "не контролировать всё, делегировать, созидать", ex: "разумные траты, забота о теле, без суеты", ess: "изобилие и созидание плодовитых плодов" },
-      4: { res: "дисциплина, порядок, спорт, опора на себя", tal: "системность, лидерство, масштабирование", les: "не скатываться в деспотизм, баланс с отдыхом", ex: "наведение порядка в финансах, ответственность", ess: "выход на новый социальный статус и фундамент" },
-      5: { res: "новые знания, порядок в делах, правила и семья", tal: "систематизация, ораторство, наставничество", les: "делиться опытом с любовью, без поучений", ex: "чистота в документах, гибкость мышления", ess: "свое место в системе и опора на ценности" },
-      6: { res: "любовь к себе, эстетика, круг единомышленников", tal: "дипломатия, тонкий вкус, союзы сердец", les: "выбирать сердцем, выход из созависимости", ex: "принятие своей внешности, верность выбору", ess: "действия исключительно из любви" },
-      7: { res: "четкие цели, движение, спорт, путешествия", tal: "стратегическое видение, управление командой", les: "двигаться последовательно, без борьбы и спешки", ex: "честный труд, без халявы, забота о позвоночнике", ess: "взять руль жизни в свои руки" },
-      8: { res: "баланс, ясность, понимание законов кармы", tal: "организаторский дар, юридическая точность", les: "поступать с людьми так, как хочешь к себе", ex: "кристальная честность, порядок в договорах и налогах", ess: "внутреннее равновесие и понимание причин" },
-      9: { res: "уединение, книги, природа, мудрый покой", tal: "глубокая аналитика, передача опыта, целительство", les: "брать достойную оплату, не прятаться от мира", ex: "не закрываться в ракушке, внимание к здоровью", ess: "обретение мудрости и самодостаточности" },
-      10: { res: "легкость, спонтанность, доверие жизни, поездки", tal: "синхронизация с удачей, денежный магнетизм", les: "перестать пахать через силу, слышать желания", ex: "адаптация к переменам, отказ от кредитов", ess: "жизнь в потоке и доверии Вселенной" },
-      11: { res: "спорт, природа, баланс напряжения и релакса", tal: "высокая работоспособность, витальность, харизма", les: "партнерство равных (1+1=11), мягкость", ex: "не выгорать, отказаться от давления и агрессии", ess: "управление мощным потенциалом во благо" },
-      12: { res: "служение из изобилия, креатив, забота о себе", tal: "нестандартное видение, новаторство, эмпатия", les: "выход из жертвы, твердое «нет» абьюзу", ex: "достойная оплата за труд, защита своих границ", ess: "забота о себе и раскрытие своего взгляда" },
-      13: { res: "расхламление, очищение, смелые перемены", tal: "адаптация, дар реаниматора, новые пути", les: "отпускать отжившее, не рубить с плеча", ex: "опираться на фундамент прошлого, без страха", ess: "освобождение от старого и перерождение" },
-      14: { res: "покой души, умеренность, вода, природа", tal: "гармонизация пространств, ангельское терпение", les: "решения в состоянии штиля, чувство меры", ex: "состояние «мне достаточно», режим дня", ess: "золотая середина и контакт со своей душой" },
-      15: { res: "проявленность, харизма, роскошь, быть собой", tal: "большие деньги, принятие тени, влияние", les: "экологичные продажи, мечтать по-крупному", ex: "свобода от зависимостей, искушений и лжи", ess: "смелая проявленность без масок" },
-      16: { res: "духовный рост, стройка, ремонт, расхламление", tal: "стойкость Феникса, масштабные преобразования", les: "внутренняя опора, независимая от внешнего", ex: "холодная голова в кризис, не держаться за руины", ess: "духовное пробуждение и новый прочный фундамент" },
-      17: { res: "творчество, публичность, стиль, вдохновение", tal: "сценический магнетизм, путеводная звезда", les: "выходить из тени в соцсети, шлифовать мастерство", ex: "преодолеть самозванца, без звездной болезни", ess: "раскрыть свой талант и светить людям" },
-      18: { res: "интуиция, психология, уют дома, метафизика", tal: "материализация мыслей через образы, эмпатия", les: "идти прямо в свои страхи, жить без масок", ex: "кристальная честность, отказ от иллюзий и долгов", ess: "преодолеть страхи и доверять интуиции" },
-      19: { res: "радость мелочей, контакт с детьми, щедрость", tal: "магнетизм изобилия, тепло, неиссякаемый свет", les: "баланс карьеры и семьи, не выжигать контролем", ex: "не сжигать себя чувством вины, баловать себя", ess: "светить открыто и жить в изобилии" },
-      20: { res: "укрепление связей с родом, традиции, уют", tal: "масштабные авторские системы, статус, влияние", les: "простить родителей, встать на свое место в роду", ex: "мирное решение споров, укрепление репутации", ess: "выход на новый уровень рода и авторский метод" },
-      21: { res: "путешествия, онлайн, новые технологии, масштаб", tal: "глобальное видение без границ, дипломатия", les: "мыслить шире рамок, доводить начатое до конца", ex: "гибкость мышления, толерантность, без распрей", ess: "квантовый скачок сознания и расширение" },
-      22: { res: "внутренняя свобода, легкость, юмор, праздник", tal: "дар начинать с нуля легко и играючи", les: "взрослая ответственность за свою свободу", ex: "без инфантилизма, необдуманных рисков и долгов", ess: "жизнь с чистого листа и взрослая легкость" }
+      3: { 
+        hook: "Если прямо сейчас накапливается фоновое раздражение на близких за бытовые мелочи и ощущение, что «я тащу на себе весь дом и устала быть сильной» — энергия заходит в перегруз.",
+        res: "Период заземления, обустройства уюта и мягкой заботы о теле. Силы возвращаются, когда вы перестаете взваливать все на себя и позволяете делам созревать естественно.", 
+        tal: "Дар мягкого масштабирования и монетизации идей через эстетику, уют и заботу. Пространство готово давать материальные плоды, если вы действуете из состояния хозяйки, а не рабочей лошадки.", 
+        les: "Урок доверия и постепенности. Важно учиться делегировать рутину, прекратить тотальный контроль над близкими и вкладывать средства в материальный фундамент.", 
+        ex: "Проверка на бытовое раздражение, придирки к близким и импульсивные траты. Риск перегрузить себя чужими заботами и слить бюджет на сиюминутные капризы.", 
+        ess: "Год взращивания плодов, создания изобильной атмосферы вокруг себя и перехода к спокойной женской устойчивости.",
+        focus: "Деньги приходят через делегирование и создание уюта; в отношениях — проверка на отказ от роли вечно недовольной мамочки.",
+        teasers: {
+          res: "В полной версии: почему попытка заработать через надрыв в этом году заблокирует женское здоровье и как наполнять батарейку без чувства вины?",
+          tal: "В полной версии: какие 3 направления в этом году принесут самый легкий финансовый доход именно в женском состоянии?",
+          les: "В полной версии: как передать часть семейного бюджета и бытовых дел партнеру, чтобы он начал действовать сам, а не из-под палки?",
+          ex: "В полной версии: 10 проверочных вопросов против импульсивных покупок и эмоциональных вспышек в доме.",
+          ess: "В полной версии: какой ключевой материальный результат должен стать вашей твердой опорой к 31 декабря?"
+        }
+      },
+      4: { 
+        hook: "Если в теле поселилось ощущение сжатых челюстей, спазма в плечах и мысли «если я всё не проконтролирую лично — всё рухнет» — это явный сигнал перегрузки.",
+        res: "Опора на четкий режим, порядок в документах, спорт и структурированный рабочий день. Хаос и невыполненные обещания сейчас выбивают почву из-под ног быстрее всего.", 
+        tal: "Природный талант управленца, стратегическое видение и способность выстроить крепкую систему, которая работает стабильно и приносит твердый доход.", 
+        les: "Умение брать взрослую ответственность за решения, не скатываясь в авторитаризм и давление. Баланс между жестким контролем и правом других людей на свое мнение.", 
+        ex: "Проверка на внутреннюю гибкость. Риск загнать себя жесткими рамками до выгорания или устроить войну за авторитет в семье и на работе.", 
+        ess: "Год закладки несокрушимого фундамента: выход на новый социальный статус, укрепление капитала и опора на свои правила.",
+        focus: "Деньги требуют строгой финансовой дисциплины и договоров; в отношениях — отказ от авторитарного диктата и давления на близких.",
+        teasers: {
+          res: "В полной версии: как построить режим дня так, чтобы система работала на вас, а не выгорала на сверхусилиях?",
+          tal: "В полной версии: пошаговый протокол оформления крупных сделок, покупки активов и выхода на новый социальный статус.",
+          les: "В полной версии: где тонкая грань между здоровым руководством и тиранией, из-за которой близкие закрываются в глухую оборону?",
+          ex: "В полной версии: тест на гибкость мышления — как перестроить планы при форс-мажоре без паники и срыва на подчиненных.",
+          ess: "В полной версии: какой фундамент статуса и недвижимости необходимо забетонировать до конца года?"
+        }
+      },
+      5: { 
+        hook: "Если ловите себя на желании непрерывно спорить в комментариях, поучать партнера «как надо правильно жить» и обижаться на чужое несогласие — вы вошли в ловушку догматизма.",
+        res: "Освоение практических знаний, чтение фундаментальных книг, наведение порядка в семейных традициях и общение с людьми, у которых есть чему поучиться.", 
+        tal: "Дар наставника, оратора и систематизатора: способность объяснять сложные вещи простым языком и объединять людей вокруг общих ценностей.", 
+        les: "Передача своего опыта без нравоучений и синдрома «я знаю лучше всех». Умение уважать чужие границы и вовремя обновлять устаревшие взгляды.", 
+        ex: "Искушение спорить до хрипоты, отстаивать устаревшие правила и делить мир на белое и черное. Проверка на юридическую чистоту договоров.", 
+        ess: "Год обретения истинного авторитета, наведения кристальной ясности в правилах жизни и укрепления семьи.",
+        focus: "Деньги приходят через обучение, передачу экспертизы и легализацию; в отношениях — сепарация от родителей и диалог на равных.",
+        teasers: {
+          res: "В полной версии: какие именно книги и наставники перезагрузят ваше мышление, а какая учеба станет пустой тратой времени?",
+          tal: "В полной версии: как упаковать личный опыт в востребованный продукт или выступление без страха «я еще недостаточно знаю»?",
+          les: "В полной версии: почему навязывание советов близким разрушает контакт и как вернуть в семью теплоту без лекций?",
+          ex: "В полной версии: юридический чекер года — какие документы и договоренности нужно перепроверить в первую очередь?",
+          ess: "В полной версии: к какому статусу признания и семейного согласия вы должны прийти к 31 декабря?"
+        }
+      },
+      6: { 
+        hook: "Если внутри мучительный раздрай «не знаю, чего хочу», страх ошибиться с выбором и зависимость от того, посмотрели ли на вас с одобрением — вы теряете контакт с собой.",
+        res: "Окружение себя красивыми вещами, душевное общение без масок, контакт с близкими по духу людьми и искренняя забота о собственном теле.", 
+        tal: "Врожденный магнетизм, тонкий эстетический вкус и дипломатический дар находить общий язык там, где другие заходят в тупик.", 
+        les: "Урок смелого выбора по сердцу. Важно перестать оглядываться на чужие ожидания, выйти из созависимости и честно признаться себе в своих истинных желаниях.", 
+        ex: "Мучительные сомнения и перекладывание решений на других. Риск застрять в идеализации партнера или требовать от себя нереального совершенства.", 
+        ess: "Год тотального принятия себя: научиться действовать из глубокой любви, а не из страха остаться отвергнутым.",
+        focus: "Деньги растут через визуальную подачу, нетворкинг и партнерство; в отношениях — честный разговор без идеализации и страха разрыва.",
+        teasers: {
+          res: "В полной версии: как перестать покупать чужое одобрение ценой собственного времени и физических сил?",
+          tal: "В полной версии: алгоритм монетизации личного обаяния и создания круга «своих людей» без лицемерия.",
+          les: "В полной версии: техника принятия сложного жизненного выбора за 15 минут, когда разум говорит одно, а сердце — другое.",
+          ex: "В полной версии: как распознать эмоциональную зависимость и перестать требовать от партнера идеальности?",
+          ess: "В полной версии: как окончательно закрыть тему сомнений в собственной ценности до конца года?"
+        }
+      },
+      7: { 
+        hook: "Если внутри кипит желание бежать сразу во все стороны, в теле фоновый тремор спешки, а малейшая заминка вызывает вспышку ярости — скорость стала разрушительной.",
+        res: "Ощущение ясной цели, смена обстановки, короткие поездки за рулем, утренний спорт и ощущение, что вы управляете собственной скоростью.", 
+        tal: "Лидерский драйв, способность быстро запустить проект с мертвой точки и повести команду за собой к осязаемому результату.", 
+        les: "Урок движения без агрессии и суеты. Дорогу осилит тот, кто идет последовательно, не сносит все на своем пути и дает себе право на пит-стоп.", 
+        ex: "Проверка на воинственность и желание продавить результат силой. Риск бросать начатое на полпути или довести тело до спазмов и травм.", 
+        ess: "Год качественного рывка: взять руль управления жизнью в свои руки и дойти до намеченной вершины без выгорания.",
+        focus: "Деньги растут пропорционально четкому пошаговому плану без метаний; в отношениях — командная игра вместо конкуренции с партнером.",
+        teasers: {
+          res: "В полной версии: какое одно стратегическое действие в 1-м квартале запустит прорыв, а из-за чего проект может резко встать на паузу?",
+          tal: "В полной версии: как правильно делегировать задачи, чтобы не переделывать все за другими посреди ночи?",
+          les: "В полной версии: почему агрессивный напор сейчас закроет финансовые двери и как включить мягкое лидерство?",
+          ex: "В полной версии: карта физической безопасности — какие виды нагрузок берегут суставы и нервную систему в период Колесницы?",
+          ess: "В полной версии: какую конкретную победу вы должны отпраздновать к 31 декабря без надрыва?"
+        }
+      },
+      8: { 
+        hook: "Если свербит мысль «мир вокруг несправедлив, я вкладываюсь больше всех, а меня не ценят» и хочется доказывать свою правоту в судах и спорах — это ловушка обиды.",
+        res: "Порядок в документах, прозрачные договоренности, закрытые хвосты по налогам и глубокое понимание причинно-следственных связей всего происходящего.", 
+        tal: "Тонкое чутье законов баланса, объективность, организаторская точность и умение разрешать спорные финансовые и юридические вопросы.", 
+        les: "Осознание личной ответственности без поиска виноватых вовне. Умение поступать с людьми кристально честно и принимать реальность без обид.", 
+        ex: "Острая борьба за мнимую справедливость и осуждение других. Риск увязнуть в судебных спорах или претензиях к несправедливости мира.", 
+        ess: "Год кармической ясности и равновесия: сбор заслуженных плодов и наведение идеального порядка во всех сферах жизни.",
+        focus: "Деньги требуют кристальной прозрачности, честных налогов и договоров; в отношениях — баланс брать/давать без скрытых счетов взаимных обид.",
+        teasers: {
+          res: "В полной версии: как закрыть старые кармические хвосты и финансовые обязательства, чтобы освободить энергию для роста?",
+          tal: "В полной версии: как использовать дар беспристрастного арбитра в переговорах для заключения сверхвыгодных контрактов?",
+          les: "В полной версии: почему обида на несправедливость мгновенно блокирует денежный поток и как переключить фокус на личную ответственность?",
+          ex: "В полной версии: техника безопасности в спорах — как выйти из юридического или личного конфликта без потерь имущества?",
+          ess: "В полной версии: какой баланс справедливости и душевного штиля станет вашей главной наградой года?"
+        }
+      },
+      9: { 
+        hook: "Если хочется натянуть плед на голову, отключить телефон, запереться от людей и кажется, что «меня всё равно никто не поймет» — уединение переходит в изоляцию.",
+        res: "Вдумчивое уединение, прогулки на природе, качественная тишина и возможность погрузиться в любимое дело без лишнего внешнего шума.", 
+        tal: "Глубокий аналитический ум, мудрость исследователя и способность создавать фундаментальные смыслы, которые служат людям годами.", 
+        les: "Урок открытости миру: не прятать свои ценные знания в стол, не бояться называть достойную цену за свой опыт и выходить в люди.", 
+        ex: "Ловушка высокомерного одиночества («кругом глупцы») и экономии на собственном комфорте. Риск замкнуться в ракушке от обиды на мир.", 
+        ess: "Год обретения глубокой внутренней опоры, самодостаточности и перехода на новый уровень экспертности.",
+        focus: "Деньги приходят через штучную дорогую экспертность и глубину; в отношениях — право на личную территорию без холодного отчуждения.",
+        teasers: {
+          res: "В полной версии: как организовать продуктивное затворничество, которое обогащает, а не превращается в депрессивную ракушку?",
+          tal: "В полной версии: как упаковать свои фундаментальные знания и продать их дорого без суеты и дешевых прогревов?",
+          les: "В полной версии: почему привычка обесценивать свой опыт в этом году приведет к безденежью и как смело заявить о себе?",
+          ex: "В полной версии: как объяснить партнеру свою потребность побыть в тишине, не раня его холодностью и молчанием?",
+          ess: "В полной версии: к какому статусу мудреца и признанного эксперта вы придете к финалу 365 дней?"
+        }
+      },
+      10: { 
+        hook: "Если вы судорожно гребете против течения, пытаетесь силой проломить закрытую дверь и боитесь расслабиться хотя бы на час — вы выпали из потока удачи.",
+        res: "Легкость, умение отпустить гиперконтроль, спонтанные путешествия и способность замечать счастливые стечения обстоятельств.", 
+        tal: "Редкая синхронизация с удачей: способность интуитивно оказаться в нужном месте в нужное время и притягивать возможности без надрыва.", 
+        les: "Урок доверия потоку событий. Перестать грести против течения там, где закрывается дверь, и научиться вовремя замечать открывающиеся окна.", 
+        ex: "Проверка ленью, пассивным ожиданием «чуда» или влезанием в долговые авантюры. Риск упустить реальный шанс из-за страха сделать шаг.", 
+        ess: "Год удачи и доверия: научиться жить играючи, следовать за своими импульсами и позволить пространству помочь вам.",
+        focus: "Деньги приходят через нестандартные предложения и легкие связки; в отношениях — совместные приключения и доверие без допросов.",
+        teasers: {
+          res: "В полной версии: как отличить истинный знак удачи от ловушки мошенников и не влезть в сомнительную финансовую авантюру?",
+          tal: "В полной версии: техника серфинга по событиям — как оказаться в эпицентре счастливых возможностей в ключевой сезон года?",
+          les: "В полной версии: почему попытка все проконтролировать до копейки перекрывает фарт и как расслабиться без чувства вины?",
+          ex: "В полной версии: 5 признаков того, что вы прокрастинируете под видом «доверия потоку», и как включить действие?",
+          ess: "В полной версии: какой счастливый поворот судьбы ждет вас на финальном витке Колеса Фортуны?"
+        }
+      },
+      11: { 
+        hook: "Если тело напряжено как струна, вы работаете по 16 часов на зубах, а к вечеру срываетесь криком на домашних из-за пустяка — ваша сила стала токсичной для вас.",
+        res: "Физическая активность, контакт со стихией, силовые тренировки и чередование периодов мощной работы с полным расслаблением.", 
+        tal: "Колоссальная работоспособность, природный магнетизм, лидерская стойкость и способность выдерживать масштабные нагрузки.", 
+        les: "Урок экологичного управления силой: отказаться от давления на окружающих, строить партнерство равных и беречь нервную систему от перегрузок.", 
+        ex: "Срывы на близких из-за накопившегося напряжения или физическое бессилие от работы на износ без права прилечь.", 
+        ess: "Год раскрытия мощного потенциала: направить бурлящую силу в созидательное русло и стать опорой для себя и своего дела.",
+        focus: "Деньги масштабируются через выносливость и смелые проекты; в отношениях — страсть и нежность вместо борьбы за доминирование.",
+        teasers: {
+          res: "В полной версии: телесный протокол Силы — как сбрасывать агрессию через спорт, не выжигая надпочечники и сердце?",
+          tal: "В полной версии: как выдерживать масштабные финансовые проекты без риска свалиться с температурой в решающий момент?",
+          les: "В полной версии: почему давление на партнера приведет к сексуальному охлаждению и как вернуть страсть без дрессировки?",
+          ex: "В полной версии: стоп-сигналы организма — как вовремя распознать предвестники нервного срыва и уйти на перезагрузку?",
+          ess: "В полной версии: какой мощный рубеж вы покорите к 31 декабря, сохранив здоровье и молодость тела?"
+        }
+      },
+      12: { 
+        hook: "Если внутри липкое чувство вины за то, что вы посмели отдохнуть, и привычка спасать всех вокруг в ущерб собственным детям и кошельку — вы в роли жертвы.",
+        res: "Творчество, медитативные практики, водные процедуры, музыка и забота о себе в первую очередь, прежде чем бросаться спасать весь мир.", 
+        tal: "Нестандартный взгляд на привычные вещи, глубокая эмпатия, новаторство в проектах и способность видеть скрытую суть людей.", 
+        les: "Урок здорового эгоизма: научиться говорить твердое «нет» без чувства вины, перестать быть удобным для всех и выйти из позиции жертвы.", 
+        ex: "Опасность жертвовать своими ресурсами ради чужого одобрения, обесценивать свой труд и копить тихую обиду на неблагодарность.", 
+        ess: "Год смены угла зрения: увидеть новые пути там, где раньше был тупик, и начать служить миру из состояния собственной наполненности.",
+        focus: "Деньги требуют достойной оплаты своего труда без скидок из жалости; в отношениях — твердые личные границы без позиции «мученика».",
+        teasers: {
+          res: "В полной версии: почему привычка работать за «спасибо» в этом году приведет к долгам и как легко поднять чек на свои услуги?",
+          tal: "В полной версии: как использовать нестандартное видение для запуска креативного продукта, у которого нет конкурентов?",
+          les: "В полной версии: пошаговая инструкция, как сказать «нет» токсичным родственникам и манипуляторам без скандала?",
+          ex: "В полной версии: как перестать притягивать в окружение инфантилов и нытиков, высасывающих ваши жизненные соки?",
+          ess: "В полной версии: какой переворот сознания откроет перед вами двери к изобилию во второй половине года?"
+        }
+      },
+      13: { 
+        hook: "Если вы судорожно держитесь за бесперспективную работу, чемодан без ручки или остывшие отношения просто из страха неизвестности — кризис станет болезненным.",
+        res: "Смелое расхламление пространства, генеральная уборка в контактах и гардеробе, отпускание старых обязательств и готовность к новизне.", 
+        tal: "Способность быстро перестраиваться в меняющихся обстоятельствах, дар антикризисного менеджера и смелость начинать с чистого листа.", 
+        les: "Урок своевременного прощания с отжившим. Если проект или отношения изжили себя, не стоит пытаться оживить то, что уже не дышит.", 
+        ex: "Судорожные попытки удержать прошлое из-за страха неизвестности либо резкие импульсивные решения «сжечь все мосты» на эмоциях.", 
+        ess: "Год глубокого перерождения: освободить место для новой главы жизни и сбросить старую тесную кожу.",
+        focus: "Деньги требуют смелого закрытия нерентабельных тем и входа в новое; в отношениях — либо честная перезагрузка союза, либо мирный развод.",
+        teasers: {
+          res: "В полной версии: чеклист расхламления года — какие 3 старые привязки нужно обрубить прямо сейчас, чтобы пошли свежие деньги?",
+          tal: "В полной версии: как повернуть любую кризисную ситуацию в свою пользу и построить успешный проект на руинах старого?",
+          les: "В полной версии: как понять — стоит ли спасать текущие отношения или пришло время поставить красивую точку?",
+          ex: "В полной версии: техника безопасности при резких переменах — как не сжечь ценные мосты в приступе отчаяния?",
+          ess: "В полной версии: в каком обновленном качестве и масштабе вы начнете жить с 1 января следующего года?"
+        }
+      },
+      14: { 
+        hook: "Если вас бросает из жесткой диеты в ночной зажор, из лени в трудоголизм, а душа требует «всё и прямо сейчас» — вы потеряли внутренний ритм и баланс.",
+        res: "Неспешность, нахождение рядом с водой, душевный покой, искусство маленьких шагов и соблюдение комфортного режима сна и питания.", 
+        tal: "Ангельское терпение, способность гармонизировать конфликты, исцелять словом и находить золотую середину в самых сложных переговорах.", 
+        les: "Урок умеренности и эмоциональной зрелости: принимать решения только в состоянии полного штиля и избегать любых крайностей.", 
+        ex: "Проверка на нетерпение («хочу мгновенный результат») и склонность к зависимостям или перееданию на фоне подавленных эмоций.", 
+        ess: "Год душевного равновесия: обрести контакт со своей душой, войти в состояние «мне достаточно» и действовать мягко, но уверенно.",
+        focus: "Деньги растут через размеренные накопительные стратегии без риска; в отношениях — душевное тепло, доверие и отсутствие эмоциональных качелей.",
+        teasers: {
+          res: "В полной версии: водные и дыхательные протоколы года, мгновенно возвращающие ясность мысли при стрессе.",
+          tal: "В полной версии: как искусство маленьких шагов принесет вам больший доход, чем рискованные финансовые скачки?",
+          les: "В полной версии: как перестать заедать тревогу и соскакивать с эмоциональных качелей в диалоге с партнером?",
+          ex: "В полной версии: тест на зрелость чувств — как вовремя распознать соблазн легкого дофамина и не слить накопленное?",
+          ess: "В полной версии: к какому целебному душевному покою и материальной стабильности вы придете к зиме?"
+        }
+      },
+      15: { 
+        hook: "Если внутри проснулась жажда контролировать каждый шаг партнера, тяга к легким сомнительным деньгам или страх проявиться ярко — Дьявол проверяет на прочность.",
+        res: "Разрешение себе быть ярким, сексуальным, проявленным, наслаждение земными радостями, вкусной едой, дорогими вещами и честный контакт со своей силой.", 
+        tal: "Невероятный финансовый магнетизм, харизма лидера, глубокое понимание психологии людей и способность видеть скрытые рычаги влияния.", 
+        les: "Урок экологичной власти и денег: зарабатывать на созидании, открыто заявлять о своих талантах и не вестись на манипуляции.", 
+        ex: "Искушение легкими путями, зависимостями, жаждой контроля или сомнительными финансовыми схемами. Проверка на верность себе.", 
+        ess: "Год смелой проявленности: принять свою теневую сторону, перестать быть «хорошей девочкой» и выйти на масштабный уровень дохода.",
+        focus: "Деньги сулят квантовый скачок при условии кристальной чистоты сделок; в отношениях — преодоление ревности, зависимостей и манипуляций.",
+        teasers: {
+          res: "В полной версии: как разрешить себе дорогие покупки и сексуальность без самоедства и страха осуждения близких?",
+          tal: "В полной версии: алгоритм включения личного денежного магнетизма — как притягивать инвесторов и крупных клиентов на свою харизму?",
+          les: "В полной версии: как распознать тайного манипулятора в своем окружении, пока он не нанес финансовый или моральный ущерб?",
+          ex: "В полной версии: техника безопасности от темных искушений — через какие проверки на жадность и похоть придется пройти?",
+          ess: "В полной версии: какой рекордный уровень дохода и внутренней свободы станет вашей новой планкой нормы?"
+        }
+      },
+      16: { 
+        hook: "Если почва уходит из-под ног, старые планы рассыпаются в прах, а внутри паника «как жить дальше» — Башня ломает только иллюзии, освобождая место подлинному.",
+        res: "Осознанное обновление жизни, ремонт, стройка, духовные практики, отказ от иллюзий и укрепление внутреннего духовного стержня.", 
+        tal: "Несокрушимая стойкость духа, способность пересобрать жизнь на прочном фундаменте и помочь другим пройти через перемены.", 
+        les: "Урок непривязанности к материальным декорациям: помнить, что истинная безопасность находится внутри вас, а не в вещах вокруг.", 
+        ex: "Риск болезненного крушения планов, если вы упорно держитесь за рушащиеся конструкции из-за страха взглянуть правде в глаза.", 
+        ess: "Год фундаментальной трансформации: пробуждение от спячки и возведение нового, по-настоящему надежного дома вашей жизни.",
+        focus: "Деньги требуют вложений в твердые активы (недвижимость, земля, стройка); в отношениях — разрушение фальши и выход на настоящую глубину.",
+        teasers: {
+          res: "В полной версии: как превратить неизбежную перестройку жизни в осознанный ремонт, избежав внезапных аварий и разрушений?",
+          tal: "В полной версии: как монетизировать опыт преодоления личных кризисов и стать железной опорой для своего окружения?",
+          les: "В полной версии: за какие иллюзорные конструкции вы цепляетесь прямо сейчас и почему их добровольный сброс спасет бюджет?",
+          ex: "В полной версии: протокол психологической защиты при форс-мажорах — как сохранять стальное спокойствие, когда штормит?",
+          ess: "В полной версии: какой несокрушимый монолитный фундамент вы возведете к концу этого непростого года?"
+        }
+      },
+      17: { 
+        hook: "Если душит синдром самозванца: «кому нужно моё творчество, кругом полно профи получше меня» и хочется спрятаться в тень — вы гасите свою Звезду.",
+        res: "Творчество, сцена, ведение блога, стильный внешний вид, вдохновляющая музыка и признание ваших заслуг со стороны окружающих.", 
+        tal: "Яркая харизма, путеводный талант вести за собой, сценический магнетизм и способность превращать свое ремесло в признанное искусство.", 
+        les: "Урок преодоления страха видимости: выйти из тени, заявить о своей уникальности и шлифовать мастерство без страха критики.", 
+        ex: "Ловушка звездной болезни либо уход в серую незаметность из-за страха зависти. Риск остаться непризнанным гением в одиночестве.", 
+        ess: "Год вашей путеводной звезды: зажечь свой профессиональный свет, стать ориентиром для других и получить заслуженное признание.",
+        focus: "Деньги приходят через публичность, личный бренд и признание экспертности; в отношениях — романтика, восхищение и взаимная гордость.",
+        teasers: {
+          res: "В полной версии: как упаковать свой блог или портфолио, чтобы клиенты приходили на вашу личность без впаривания?",
+          tal: "В полной версии: пошаговый план выхода из тени в публичное поле без парализующего страха осуждения хейтеров.",
+          les: "В полной версии: почему обесценивание своей индивидуальности заблокирует социальные лифты и как поверить в свою звезду?",
+          ex: "В полной версии: вакцина от гордыни и зависти — как экологично проживать чужой успех и привлекать фанатов своего дела?",
+          ess: "В полной версии: на какую вершину признания и творческого триумфа вы взойдете к 31 декабря?"
+        }
+      },
+      18: { 
+        hook: "Если накатывают беспричинные панические атаки, мнительность, страх нищеты или навязчивые подозрения в адрес близких — это морок и игры подсознания.",
+        res: "Развитие интуиции, работа с подсознанием, психология, уютный дом, свечи, творческое воображение и доверие своим предчувствиям.", 
+        tal: "Колоссальная сила материализации мыслей через образы, глубинная эмпатия, дар психолога и способность чувствовать скрытые течения.", 
+        les: "Урок смелости смотреть своим страхам в лицо: не прятаться в иллюзиях, избегать тайн, интриг и наводить кристальную ясность в планах.", 
+        ex: "Застревание в тревогах, панических сценариях и мнительности. Риск придумать себе проблему там, где ее нет, и испугаться действовать.", 
+        ess: "Год глубокого контакта с интуицией: развеять туман страхов и научиться осознанно материализовать желаемые события.",
+        focus: "Деньги материализуются через визуализацию и работу со страхами нищеты; в отношениях — кристальная честность без тайн, измен и домыслов.",
+        teasers: {
+          res: "В полной версии: как отличить голос подлинной интуиции от ложного нашептывания тревожного ума?",
+          tal: "В полной версии: секретная технология материализации мыслей Луны — как перевести страх в реальные финансовые активы?",
+          les: "В полной версии: почему любые тайные интриги и обманы в этом году всплывут наружу и разрушат репутацию?",
+          ex: "В полной версии: 3 телесные практики для мгновенного снятия паники и тревожного тумана без таблеток.",
+          ess: "В полной версии: какой глубокий контакт со своей душой и материальным миром вы обретете к финалу периода?"
+        }
+      },
+      19: { 
+        hook: "Если внутри накапливается едкое чувство вины за прошлые ошибки, самоедство или желание испепелить близких гиперопекой — Солнце начинает выжигать.",
+        res: "Щедрость, теплое общение, искренняя радость простым мелочам, игра с детьми, солнце и возможность щедро делиться своим изобилием.", 
+        tal: "Масштабный свет, способность обогревать большие коллективы, притягивать процветание и создавать вокруг себя атмосферу праздника.", 
+        les: "Урок гармоничного распределения внимания: светить многим проектам сразу, не выжигая дотла одну конкретную сферу или человека контролем.", 
+        ex: "Склонность испепелять себя чувством вины и самоедством либо душить близких навязчивой опекой и требовать благодарности.", 
+        ess: "Год истинного расцвета: выйти на пик радости и щедрости, реализовать масштабные проекты и жить в изобилии без выгорания.",
+        focus: "Деньги текут широким потоком через щедрость и крупные масштабные начинания; в отношениях — праздник, рождение детей и теплое доверие.",
+        teasers: {
+          res: "В полной версии: как перестать сжигать себя самоедством и включить теплое сияние, притягивающее деньги и любовь?",
+          tal: "В полной версии: как масштабировать свои проекты на федеральный или международный уровень без выгорания?",
+          les: "В полной версии: почему гиперопека над ребенком или мужем вызовет бунт и как дать близким свободу дышать?",
+          ex: "В полной версии: протокол исцеления детской травмы непринятия — как радоваться жизни легко, как в 5 лет?",
+          ess: "В полной версии: к какому золотому стандарту изобилия и семейного счастья вы придете к Новому году?"
+        }
+      },
+      20: { 
+        hook: "Если вспыхивают застарелые семейные обиды, хочется обвинять родителей в своих неудачах или делить наследство со скандалом — активировалась родовая карма.",
+        res: "Укрепление семейных уз, уважение к родителям и корням, обустройство родового гнезда, совместные обеды и ощущение поддержки предков.", 
+        tal: "Дар создания масштабных долгосрочных систем, способность восстанавливать справедливость и возрождать заброшенные начинания.", 
+        les: "Урок исцеления родовых связей: простить старые обиды на родителей, занять свое законное взрослое место в семейной иерархии.", 
+        ex: "Опасность втянуться в затяжные семейные конфликты, осуждать родню или повторять чужие деструктивные сценарии судьбы.", 
+        ess: "Год родового возрождения: выход на качественно новый статус, очищение своей истории и закладка силы для будущих поколений.",
+        focus: "Деньги приходят через семейный бизнес, родовую недвижимость и крупные клановые проекты; в отношениях — примирение с родом и верность корням.",
+        teasers: {
+          res: "В полной версии: как получить колоссальную силу и денежный ресурс своего рода, простив обиды на родителей?",
+          tal: "В полной версии: как возродить проект, на котором все поставили крест, и сделать его главным источником дохода семьи?",
+          les: "В полной версии: техника выхода из деструктивных сценариев предков (разводы, банкротства) раз и навсегда.",
+          ex: "В полной версии: как разрешить споры по наследству или недвижимости мирным путем без судебных тяжб?",
+          ess: "В полной версии: какой новый статус и родовое гнездо станут оплотом вашей безопасности к 31 декабря?"
+        }
+      },
+      21: { 
+        hook: "Если вы чувствуете тесноту в своем городе, раздражение на чужой образ жизни и непреодолимый страх мыслить глобально — вы застряли в тесных границах.",
+        res: "Дальние путешествия, изучение языков, расширение кругозора, выход в онлайн и ощущение себя свободным гражданином всего мира.", 
+        tal: "Глобальное мышление, дар дипломата, способность объединять людей разных культур и масштабировать проекты на международный уровень.", 
+        les: "Урок толерантности и широты взглядов: избавиться от шаблонов и предрассудков, мыслить категориями планеты и доводить начатое до финала.", 
+        ex: "Стремление закрыться в тесных границах, враждебность к чужим взглядам либо распыление сил на сотню проектов без единого результата.", 
+        ess: "Год квантового расширения: снять внутренние ограничения, выйти за привычные рамки и почувствовать безграничность своих возможностей.",
+        focus: "Деньги масштабируются через интернет, экспорт, туризм и мультивалюту; в отношениях — союзы без предрассудков, переезды и путешествия.",
+        teasers: {
+          res: "В полной версии: в каких странах или онлайн-нишах заложен ваш главный финансовый рывок в этом году?",
+          tal: "В полной версии: пошаговый алгоритм масштабирования вашего дела на весь мир без огромных бюджетов на рекламу.",
+          les: "В полной версии: как перестать воевать с чужой картиной мира и привлечь зарубежных партнеров и клиентов?",
+          ex: "В полной версии: техника безопасности при релокации, покупке билетов и оформлении международных виз/счетов.",
+          ess: "В полной версии: какой квантовый скачок сознания и географической свободы ждет вас к 31 декабря?"
+        }
+      },
+      22: { 
+        hook: "Если вам кажется, что вся жизнь превратилась в унылую тюрьму обязательств и хочется бросить всё, напиться или сбежать на край света — свобода ищет выход в бунте.",
+        res: "Чувство внутренней свободы, легкость на подъем, юмор, прогулки без жесткого расписания и отношение к жизни как к увлекательной игре.", 
+        tal: "Уникальный дар начинать с нуля легко и непринужденно, разрушать закостенелые стереотипы и находить нестандартные креативные ходы.", 
+        les: "Урок зрелой свободы: понимать, что свобода — это не побег от обязательств и не инфантилизм, а осознанный выбор своего уникального пути.", 
+        ex: "Ловушка инфантилизма, легкомысленных долгов, пустых авантюр или бунта ради бунта. Риск потерять всё из-за пренебрежения правилами.", 
+        ess: "Год чистой страницы: начать новый жизненный цикл со свежими силами, сбросить лишний груз и двигаться вперед с улыбкой.",
+        focus: "Деньги требуют легкости, креативных стартапов и отсутствия жестких догм; в отношениях — свобода выбора без удушающих рамок и ревности.",
+        teasers: {
+          res: "В полной версии: как сбросить груз вины и чужих ожиданий, вернув себе детскую непосредственность и чистую энергию?",
+          tal: "В полной версии: как запустить проект мечты с абсолютного нуля без стартового капитала на одной лишь гениальной идее?",
+          les: "В полной версии: где проходит грань между подлинной свободой духа и безответственным побегом от взрослой жизни?",
+          ex: "В полной версии: как не влезть в дурацкие импульсивные кредиты и авантюры, сохранив финансовую стабильность?",
+          ess: "В полной версии: с какой абсолютно чистой, вдохновляющей страницы вы начнете новый виток своей судьбы?"
+        }
+      }
     };
 
     const EVENT_FORMULAS = [
@@ -1372,9 +2811,16 @@
       ess: "Финальный вектор и смысл года: ключевой итог, к которому важно прийти к 31 декабря"
     };
 
+    let lastCalculatedParams = null;
+    let hasShownExitIntent = false;
+
     document.addEventListener("DOMContentLoaded", () => {
       populateDaySelect();
       populateMonthSelect();
+      initSliderControls();
+      initStickyBarObserver();
+      initExitIntent();
+      checkUrlParamsForAutoCalc();
     });
 
     function populateDaySelect() {
@@ -1407,6 +2853,10 @@
       const birthYear = parseInt(document.getElementById('birthYear').value, 10);
       const targetYear = parseInt(document.getElementById('targetYear').value, 10);
 
+      if (!day || !month || !birthYear || !targetYear) return;
+
+      lastCalculatedParams = { day, month, birthYear, targetYear };
+
       const A = reduceTo22(day);
       const B = month;
       const V = reduceTo22(sumDigits(birthYear));
@@ -1438,6 +2888,27 @@
       document.getElementById('resultBirthMeta').textContent = 
         `Дата рождения: ${formattedDay}.${formattedMonth}.${birthYear} • Аркан года: ${ArkanGoda}`;
 
+      // Personalize commercial offer dynamically
+      const arkanName = ARCANES_NAMES[ArkanGoda] || `Аркан ${ArkanGoda}`;
+      const offerTitle = document.getElementById('dynamicOfferTitle');
+      const offerBadge = document.getElementById('dynamicOfferBadge');
+      if (offerTitle) {
+        offerTitle.innerHTML = `«Матрица на <span class="dynamic-year-tag">${targetYear} год</span>: Твой личный маршрут»`;
+      }
+      if (offerBadge) {
+        offerBadge.textContent = `✦ Аркан года: ${ArkanGoda} (${arkanName}) • Маршрут на 365 дней`;
+      }
+
+      // Dynamic Personalization of Checkout Buttons
+      const paymentBtnText = document.getElementById('paymentBtnDynamicText');
+      if (paymentBtnText) {
+        paymentBtnText.textContent = `Получить навигатор на ${targetYear} год (Аркан ${ArkanGoda})`;
+      }
+      const mobileStickyText = document.getElementById('mobileStickyBtnText');
+      if (mobileStickyText) {
+        mobileStickyText.textContent = `Навигатор на ${targetYear} г.`;
+      }
+
       renderQuickSummary(A1, B1, V1, G1, Ya1);
       renderEventCodes([A1, B1, V1, G1, Ya1]);
 
@@ -1452,16 +2923,72 @@
       container.innerHTML = '';
 
       const items = [
-        { label: "Ресурс", arcane: a1, badgeBg: "#D8D2EB", role: POSITION_ROLES.res, text: BRIEF_ARCANES[a1]?.res || "наполнение силой и баланс" },
-        { label: "Талант", arcane: b1, badgeBg: "#D8D2EB", role: POSITION_ROLES.tal, text: BRIEF_ARCANES[b1]?.tal || "раскрытие скрытых даров" },
-        { label: "Урок", arcane: v1, badgeBg: "#F8C6B5", role: POSITION_ROLES.les, text: BRIEF_ARCANES[v1]?.les || "главная стратегия действий" },
-        { label: "Экзамен", arcane: g1, badgeBg: "#F8C6B5", role: POSITION_ROLES.ex, text: BRIEF_ARCANES[g1]?.ex || "фокус самоконтроля" },
-        { label: "Суть года", arcane: ya1, badgeBg: "#B6C8B1", role: POSITION_ROLES.ess, text: BRIEF_ARCANES[ya1]?.ess || "главный вектор и смысл" }
+        { 
+          id: "row-a1", 
+          key: "res",
+          label: "Ресурс", 
+          arcane: a1, 
+          badgeBg: "#D8D2EB", 
+          role: POSITION_ROLES.res, 
+          hook: BRIEF_ARCANES[a1]?.hook || "Если в теле поселилась усталость и хаос — энергия требует подзарядки.",
+          text: BRIEF_ARCANES[a1]?.res || "Период заземления, обустройства комфорта и заботы о личном ресурсе.", 
+          focus: BRIEF_ARCANES[a1]?.focus || "Деньги требуют бережного распределения; в отношениях — тепло и внимание к себе.",
+          teaser: BRIEF_ARCANES[a1]?.teasers?.res || "В полной версии: точный список действий для зарядки батарейки без выгорания." 
+        },
+        { 
+          id: "row-b1", 
+          key: "tal",
+          label: "Талант", 
+          arcane: b1, 
+          badgeBg: "#D8D2EB", 
+          role: POSITION_ROLES.tal, 
+          hook: BRIEF_ARCANES[b1]?.hook || "Если вы сомневаетесь в своих силах — пространство ждет проявления вашего дара.",
+          text: BRIEF_ARCANES[b1]?.tal || "Врожденный потенциал периода, который пространство готово щедро поддерживать.", 
+          focus: BRIEF_ARCANES[b1]?.focus || "Деньги растут через монетизацию сильных сторон; в отношениях — искренность.",
+          teaser: BRIEF_ARCANES[b1]?.teasers?.tal || "В полной версии: как раскрыть этот дар и какие карьерные лифты откроются в этом году?" 
+        },
+        { 
+          id: "row-v1", 
+          key: "les",
+          label: "Урок", 
+          arcane: v1, 
+          badgeBg: "#F8C6B5", 
+          role: POSITION_ROLES.les, 
+          hook: BRIEF_ARCANES[v1]?.hook || "Если возникает соблазн продавить результат силой или поспешить — это зона контрольной работы.",
+          text: BRIEF_ARCANES[v1]?.les || "Главная стратегия действий года. Важно не спешить, избегать суеты и поступать осознанно.", 
+          focus: BRIEF_ARCANES[v1]?.focus || "Деньги требуют взвешенных решений; в отношениях — уважение чужих границ.",
+          teaser: BRIEF_ARCANES[v1]?.teasers?.les || "В полной версии: какая главная ошибка мышления может слить бюджет и как поступить правильно?" 
+        },
+        { 
+          id: "row-g1", 
+          key: "ex",
+          label: "Экзамен", 
+          arcane: g1, 
+          badgeBg: "#F8C6B5", 
+          role: POSITION_ROLES.ex, 
+          hook: BRIEF_ARCANES[g1]?.hook || "Если ловите себя на раздражении или обиде — проверка экзамена уже началась.",
+          text: BRIEF_ARCANES[g1]?.ex || "Зона главных эмоциональных проверок и провокаций ума. Риск сорваться на эмоциях.", 
+          focus: BRIEF_ARCANES[g1]?.focus || "Деньги проверяются на честность и жадность; в отношениях — развилка между близостью и конфликтом.",
+          teaser: BRIEF_ARCANES[g1]?.teasers?.ex || "В полной версии: 10 проверочных вопросов для самоконтроля, чтобы сдать экзамен без потерь." 
+        },
+        { 
+          id: "row-ya1", 
+          key: "ess",
+          label: "Суть года", 
+          arcane: ya1, 
+          badgeBg: "#B6C8B1", 
+          role: POSITION_ROLES.ess, 
+          hook: BRIEF_ARCANES[ya1]?.hook || "Если ищете ответ на вопрос «зачем мне дан этот год» — ответ заложен в этой точке.",
+          text: BRIEF_ARCANES[ya1]?.ess || "Главный духовный смысл и осязаемый итог всех 365 дней. То, к какому качеству жизни важно прийти.", 
+          focus: BRIEF_ARCANES[ya1]?.focus || "Деньги и отношения объединяются в единый зрелый вектор вашей жизни.",
+          teaser: BRIEF_ARCANES[ya1]?.teasers?.ess || "В полной версии: к какому ключевому результату и внутреннему состоянию вы должны прийти к 31 декабря?" 
+        }
       ];
 
       items.forEach(item => {
         const name = ARCANES_NAMES[item.arcane] || `Аркан ${item.arcane}`;
         const row = document.createElement('div');
+        row.id = item.id;
         row.className = 'compact-summary-row';
         row.innerHTML = `
           <div class="compact-row-header">
@@ -1470,8 +2997,24 @@
             </div>
             <div class="compact-pos-role">${item.role}</div>
           </div>
+
+          <div class="hook-recognition-pill">
+            <span>⚡</span>
+            <div><strong>Узнавание состояния:</strong> ${item.hook}</div>
+          </div>
+
           <div class="compact-summary-text">
-            <strong>✦ Проявление:</strong> ${item.text}
+            <strong>✦ Сигнал карты:</strong> ${item.text}
+          </div>
+
+          <div class="focus-real-world-row">
+            <span class="focus-title">🧭 Фокус года:</span>
+            <span>${item.focus}</span>
+          </div>
+
+          <div class="compact-summary-teaser-hint" onclick="goToOffer()">
+            <span>🔒 ${item.teaser}</span>
+            <span class="teaser-cta-arrow">Узнать в навигаторе →</span>
           </div>
         `;
         container.appendChild(row);
@@ -1497,15 +3040,290 @@
       });
     }
 
+    function scrollToPositionRow(posId) {
+      const targetRow = document.getElementById(`row-${posId}`);
+      if (!targetRow) return;
+
+      document.querySelectorAll('.compact-summary-row').forEach(r => r.classList.remove('highlight-row'));
+      targetRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      targetRow.classList.add('highlight-row');
+
+      setTimeout(() => {
+        targetRow.classList.remove('highlight-row');
+      }, 2400);
+    }
+
     function goToOffer() {
       const offerSection = document.getElementById('fullAccessOffer');
-      if (offerSection) {
-        offerSection.classList.add('active');
-        offerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        offerSection.classList.remove('highlight-pulse');
-        void offerSection.offsetWidth;
-        offerSection.classList.add('highlight-pulse');
+      const pricingBox = document.getElementById('finalPricingBox');
+      
+      // Auto-reveal results if user clicks CTA before calculating
+      const resultsSection = document.getElementById('resultsSection');
+      if (resultsSection && resultsSection.style.display !== 'block') {
+        resultsSection.style.display = 'block';
       }
+
+      if (pricingBox) {
+        pricingBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else if (offerSection) {
+        offerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function updateSavingsTier(count, btn) {
+      document.querySelectorAll('.savings-pill-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const textEl = document.getElementById('savingsResultText');
+      if (!textEl) return;
+
+      if (count === 1) {
+        textEl.innerHTML = `Вместо <strong>7 000 – 10 000 ₽</strong> за разовую консультацию — вы платите всего <strong>1 990 ₽</strong> с бессрочным доступом`;
+      } else if (count === 3) {
+        textEl.innerHTML = `Вместо <strong>~21 000 ₽</strong> за 3 персональные сессии у специалиста — вы платите всего <strong>1 990 ₽</strong> один раз за всю семью`;
+      } else {
+        textEl.innerHTML = `Вместо <strong>35 000+ ₽</strong> за разбор всей семьи и клиентов — неограниченный доступ навсегда всего за <strong>1 990 ₽</strong>`;
+      }
+    }
+
+    function openLightbox(imgSrc, title) {
+      const modal = document.getElementById('pageLightboxModal');
+      const img = document.getElementById('lightboxImg');
+      const titleEl = document.getElementById('lightboxTitle');
+      if (!modal || !img) return;
+
+      img.src = imgSrc;
+      if (titleEl) titleEl.textContent = title || 'Страница отчета';
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('pageLightboxModal');
+      if (!modal) return;
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function closeLightboxOnBackdrop(e) {
+      if (e.target.id === 'pageLightboxModal') {
+        closeLightbox();
+      }
+    }
+
+    function initExitIntent() {
+      document.addEventListener('mouseleave', (e) => {
+        if (e.clientY <= 10 && !hasShownExitIntent && lastCalculatedParams) {
+          hasShownExitIntent = true;
+          openExitModal();
+        }
+      });
+    }
+
+    function openExitModal() {
+      const modal = document.getElementById('exitModalOverlay');
+      const desc = document.getElementById('exitModalDesc');
+      if (!modal) return;
+      if (lastCalculatedParams && desc) {
+        desc.textContent = `Вы рассчитали свой маршрут на ${lastCalculatedParams.targetYear} год. Сохраните ссылку на результат себе в закладки или Telegram, чтобы не потерять ориентиры года.`;
+      }
+      modal.classList.add('active');
+    }
+
+    function closeExitModal() {
+      const modal = document.getElementById('exitModalOverlay');
+      if (modal) modal.classList.remove('active');
+    }
+
+    function closeExitModalOnBackdrop(e) {
+      if (e.target.id === 'exitModalOverlay') {
+        closeExitModal();
+      }
+    }
+
+    function copyExitLinkAndNotify() {
+      copyResultShareLink();
+      closeExitModal();
+    }
+
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const collapse = item.querySelector('.faq-answer-collapse');
+      const isOpen = item.classList.contains('open');
+
+      document.querySelectorAll('.faq-item.open').forEach(openItem => {
+        if (openItem !== item) {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-answer-collapse').style.maxHeight = null;
+        }
+      });
+
+      if (isOpen) {
+        item.classList.remove('open');
+        collapse.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        collapse.style.maxHeight = collapse.scrollHeight + "px";
+      }
+    }
+
+    function copyResultShareLink() {
+      if (!lastCalculatedParams) {
+        showToast('Сначала введите дату и нажмите «Рассчитать»');
+        return;
+      }
+      const { day, month, birthYear, targetYear } = lastCalculatedParams;
+      const url = new URL(window.location.href);
+      url.searchParams.set('d', day);
+      url.searchParams.set('m', month);
+      url.searchParams.set('by', birthYear);
+      url.searchParams.set('ty', targetYear);
+
+      navigator.clipboard.writeText(url.toString()).then(() => {
+        showToast('Ссылка на ваш расчет скопирована! Отправьте её близким.');
+      }).catch(() => {
+        showToast('Ссылка сформирована в адресной строке браузера.');
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastNotice');
+      const text = document.getElementById('toastMessage');
+      if (!toast || !text) return;
+      text.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3500);
+    }
+
+    function checkUrlParamsForAutoCalc() {
+      const params = new URLSearchParams(window.location.search);
+      const d = params.get('d');
+      const m = params.get('m');
+      const by = params.get('by');
+      const ty = params.get('ty');
+
+      if (d && m && by && ty) {
+        const daySelect = document.getElementById('birthDay');
+        const monthSelect = document.getElementById('birthMonth');
+        const birthYearInput = document.getElementById('birthYear');
+        const targetYearInput = document.getElementById('targetYear');
+
+        if (daySelect && monthSelect && birthYearInput && targetYearInput) {
+          daySelect.value = d;
+          monthSelect.value = m;
+          birthYearInput.value = by;
+          targetYearInput.value = ty;
+          calculateMatrix();
+        }
+      }
+    }
+
+    function slidePreview(direction) {
+      const track = document.getElementById('previewSliderTrack');
+      if (!track) return;
+      const card = track.querySelector('.slide-page-card');
+      const step = card ? (card.offsetWidth + 16) * 1.2 : track.clientWidth * 0.75;
+      track.scrollBy({ left: step * direction, behavior: 'smooth' });
+    }
+
+    function initSliderControls() {
+      const track = document.getElementById('previewSliderTrack');
+      const dotsContainer = document.getElementById('sliderDotsTrack');
+      if (!track) return;
+
+      const slides = track.querySelectorAll('.slide-page-card');
+      if (dotsContainer && slides.length > 0) {
+        dotsContainer.innerHTML = '';
+        slides.forEach((_, idx) => {
+          const dot = document.createElement('div');
+          dot.className = `slider-dot ${idx === 0 ? 'active' : ''}`;
+          dot.addEventListener('click', () => {
+            const targetSlide = slides[idx];
+            if (targetSlide) {
+              targetSlide.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+          });
+          dotsContainer.appendChild(dot);
+        });
+      }
+
+      let scrollTimer = null;
+      track.addEventListener('scroll', () => {
+        if (scrollTimer) clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
+          const dots = dotsContainer ? dotsContainer.querySelectorAll('.slider-dot') : [];
+          if (!dots.length) return;
+          const center = track.scrollLeft + track.clientWidth / 2;
+          let activeIndex = 0;
+          let minDistance = Infinity;
+
+          slides.forEach((slide, i) => {
+            const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+            const distance = Math.abs(center - slideCenter);
+            if (distance < minDistance) {
+              minDistance = distance;
+              activeIndex = i;
+            }
+          });
+
+          dots.forEach((d, i) => d.classList.toggle('active', i === activeIndex));
+        }, 60);
+      }, { passive: true });
+
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
+
+      track.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - track.offsetLeft;
+        scrollLeft = track.scrollLeft;
+      });
+
+      track.addEventListener('mouseleave', () => { isDown = false; });
+      track.addEventListener('mouseup', () => { isDown = false; });
+
+      track.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - track.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        track.scrollLeft = scrollLeft - walk;
+      });
+    }
+
+    function initStickyBarObserver() {
+      const stickyBar = document.getElementById('mobileStickyBar');
+      const offerSection = document.getElementById('fullAccessOffer');
+      const pricingBox = document.getElementById('finalPricingBox');
+      if (!stickyBar || !offerSection || !pricingBox) return;
+
+      const checkVisibility = () => {
+        if (window.innerWidth > 768) {
+          stickyBar.style.display = 'none';
+          return;
+        }
+        const results = document.getElementById('resultsSection');
+        if (!results || results.style.display !== 'block') {
+          stickyBar.style.display = 'none';
+          return;
+        }
+
+        const offerRect = offerSection.getBoundingClientRect();
+        const pricingRect = pricingBox.getBoundingClientRect();
+        const inOfferZone = offerRect.top < window.innerHeight && offerRect.bottom > 150;
+        const reachedBuyButton = pricingRect.top < window.innerHeight - 80;
+
+        if (inOfferZone && !reachedBuyButton) {
+          stickyBar.style.display = 'block';
+        } else {
+          stickyBar.style.display = 'none';
+        }
+      };
+
+      window.addEventListener('scroll', checkVisibility, { passive: true });
+      window.addEventListener('resize', checkVisibility, { passive: true });
     }
   </script>
 </body>
