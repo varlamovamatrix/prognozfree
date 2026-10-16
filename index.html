@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Годовая Матрица: Навигатор года</title>
+  
+  <!-- Google Fonts: Manrope, Golos Text, Lora -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-cream: #F4EEE6;
+      --accent-peach: #E8B39E;
+      --accent-peach-light: #F8C6B5;
+      --accent-sage: #A7B4A0;
+      --accent-sage-soft: #B6C8B1;
+      --text-main: #392E45;
+      --accent-gold: #BE985C;
+      --pastel-lilac: #D8D2EB;
+      
+      --card-bg: rgba(255, 255, 255, 0.94);
+      --card-border: rgba(190, 152, 92, 0.28);
+      --shadow-soft: 0 16px 45px -12px rgba(57, 46, 69, 0.08);
+      --shadow-hover: 0 22px 50px -10px rgba(57, 46, 69, 0.14);
+      --radius-pill: 9999px;
+      --radius-card: 26px;
+      --radius-inner: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      color: var(--text-main);
+      font-family: 'Golos Text', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(232, 179, 158, 0.16) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(167, 180, 160, 0.16) 0%, transparent 40%);
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+    }
+
+    .font-serif {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      padding: 22px 0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(244, 238, 230, 0.88);
+      border-bottom: 1px solid rgba(190, 152, 92, 0.16);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .nav-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: var(--radius-pill);
+      background: #FFFFFF;
+      color: var(--text-main);
+      border: 1px solid rgba(190, 152, 92, 0.35);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px rgba(57, 46, 69, 0.04);
+    }
+
+    .nav-cta-btn:hover {
+      background: var(--text-main);
+      color: #FFFFFF;
+      border-color: var(--text-main);
+      transform: translateY(-2px);
+    }
+
+    .hero-section {
+      padding: 55px 0 30px;
+      text-align: center;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      background: rgba(232, 179, 158, 0.35);
+      border: 1px solid rgba(232, 179, 158, 0.6);
+      color: var(--text-main);
+      font-size: 0.84rem;
+      font-weight: 600;
+      border-radius: var(--radius-pill);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      line-height: 1.18;
+      margin-bottom: 18px;
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-title span.accent {
+      color: var(--accent-gold);
+    }
+
+    .hero-desc {
+      font-size: clamp(1rem, 1.8vw, 1.18rem);
+      color: rgba(57, 46, 69, 0.82);
+      max-width: 720px;
+      margin: 0 auto 28px;
+    }
+
+    .hero-features {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px 28px;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .hero-features span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-features span svg {
+      color: var(--accent-gold);
+    }
+
+    .calc-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-soft);
+      padding: 36px 32px;
+      margin: 20px auto 40px;
+      max-width: 820px;
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: flex-end;
+    }
+
+    @media (max-width: 680px) {
+      .calc-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .calc-card {
+        padding: 24px 18px;
+      }
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-align: left;
+    }
+
+    .input-label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .date-inputs-row {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 1.4fr;
+      gap: 8px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 13px 14px;
+      background: #FFFFFF;
+      border: 1px solid rgba(190, 152, 92, 0.35);
+      border-radius: 14px;
+      font-family: 'Golos Text', sans-serif;
+      font-size: 0.96rem;
+      color: var(--text-main);
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .form-control:focus {
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 0 3px rgba(190, 152, 92, 0.16);
+    }
+
+    .btn-calc {
+      width: 100%;
+      padding: 15px 28px;
+      border: none;
+      border-radius: var(--radius-pill);
+      background: var(--accent-peach);
+      color: var(--text-main);
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 1.02rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 8px 24px rgba(232, 179, 158, 0.45);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-calc:hover {
+      background: #e2a48c;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(232, 179, 158, 0.55);
+    }
+
+    .calc-meta-hint {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 0.8rem;
+      color: rgba(57, 46, 69, 0.65);
+    }
+
+    .results-section {
+      display: none;
+      animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .matrix-display-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-soft);
+      padding: 36px 20px;
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .matrix-title-meta {
+      font-size: 1.45rem;
+      margin-bottom: 6px;
+    }
+
+    .matrix-subtitle-meta {
+      font-size: 0.95rem;
+      color: rgba(57, 46, 69, 0.7);
+      margin-bottom: 24px;
+    }
+
+    .matrix-svg-container {
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    svg.diamond-svg {
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+
+    .matrix-node {
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .matrix-node:hover {
+      transform: scale(1.08);
+    }
+
+    .node-label-sub {
+      font-family: 'Golos Text', sans-serif;
+      font-size: 11.5px;
+      fill: var(--text-main);
+      font-weight: 500;
+    }
+
+    .node-label-val {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      dominant-baseline: central;
+      text-anchor: middle;
+    }
+
+    .positions-quick-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 24px 0 10px;
+    }
+
+    .pos-quick-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: #FFFFFF;
+      border: 1px solid rgba(190, 152, 92, 0.28);
+      border-radius: var(--radius-pill);
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .pos-quick-badge .circle-tag {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .quick-summary-section, .event-codes-section {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-soft);
+      padding: 28px 26px;
+      margin-bottom: 35px;
+    }
+
+    .compact-summary-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .compact-summary-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 14px 18px;
+      background: #FFFFFF;
+      border: 1px solid rgba(190, 152, 92, 0.18);
+      border-radius: 16px;
+    }
+
+    .compact-row-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .compact-pos-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      font-size: 0.86rem;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+      color: var(--text-main);
+    }
+
+    .compact-pos-role {
+      font-size: 0.86rem;
+      color: rgba(57, 46, 69, 0.75);
+      font-weight: 500;
+    }
+
+    .compact-summary-text {
+      font-size: 0.92rem;
+      color: var(--text-main);
+      padding-top: 6px;
+      border-top: 1px dashed rgba(190, 152, 92, 0.2);
+    }
+
+    .section-headline {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .section-headline h3 {
+      font-size: 1.55rem;
+      margin-bottom: 4px;
+    }
+
+    .codes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .code-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(190, 152, 92, 0.2);
+      border-radius: var(--radius-inner);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .code-badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      align-self: flex-start;
+    }
+
+    .code-badge-status.active {
+      background: rgba(167, 180, 160, 0.28);
+      color: #2e4d25;
+    }
+
+    .code-badge-status.inactive {
+      background: rgba(57, 46, 69, 0.08);
+      color: rgba(57, 46, 69, 0.45);
+    }
+
+    .code-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .unlock-access-card {
+      margin-top: 10px;
+      background: linear-gradient(135deg, rgba(232, 179, 158, 0.2) 0%, rgba(216, 210, 235, 0.25) 100%);
+      border: 1.5px dashed var(--accent-gold);
+      border-radius: var(--radius-inner);
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .unlock-access-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 580px;
+    }
+
+    .unlock-icon-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 1px solid var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--accent-gold);
+    }
+
+    .unlock-access-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+
+    .unlock-access-sub {
+      font-size: 0.86rem;
+      color: rgba(57, 46, 69, 0.72);
+    }
+
+    @keyframes pulseAttention {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(232, 179, 158, 0.75);
+      }
+      50% {
+        transform: scale(1.04);
+        box-shadow: 0 0 0 14px rgba(232, 179, 158, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(232, 179, 158, 0);
+      }
+    }
+
+    .btn-unlock-tg {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, var(--text-main) 0%, #221a2c 100%);
+      color: #FFFFFF !important;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 1.02rem;
+      border: 2px solid var(--accent-gold);
+      cursor: pointer;
+      text-decoration: none;
+      animation: pulseAttention 2.2s infinite ease-in-out;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .btn-unlock-tg:hover {
+      animation: none;
+      transform: scale(1.05);
+      background: #181220;
+      box-shadow: 0 10px 28px rgba(57, 46, 69, 0.35);
+    }
+
+    /* ========================================================
+       CONVERTING COMMERCIAL OFFER SECTION STYLING
+    ======================================================== */
+    .offer-card {
+      display: none;
+      background: linear-gradient(180deg, #FFFFFF 0%, #FCFAF7 100%);
+      border: 2px solid var(--accent-gold);
+      border-radius: var(--radius-card);
+      box-shadow: 0 30px 70px -15px rgba(57, 46, 69, 0.18);
+      padding: 50px 36px;
+      margin: 40px auto 60px;
+      text-align: left;
+      scroll-margin-top: 90px;
+      position: relative;
+    }
+
+    @media (max-width: 768px) {
+      .offer-card {
+        padding: 30px 20px;
+      }
+    }
+
+    .offer-card.active {
+      display: block;
+      animation: unfoldOffer 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes unfoldOffer {
+      from { opacity: 0; transform: translateY(24px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .offer-card.highlight-pulse {
+      outline: 4px solid var(--accent-peach);
+      box-shadow: 0 0 50px rgba(232, 179, 158, 0.6);
+    }
+
+    .offer-badge-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .offer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      background: rgba(190, 152, 92, 0.18);
+      color: var(--accent-gold);
+      font-weight: 700;
+      font-size: 0.88rem;
+      border-radius: var(--radius-pill);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .offer-header-center {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 36px;
+    }
+
+    .offer-main-title {
+      font-size: clamp(1.85rem, 3.6vw, 2.7rem);
+      line-height: 1.22;
+      margin-bottom: 16px;
+    }
+
+    .offer-sub-lead {
+      font-size: clamp(1.05rem, 2vw, 1.22rem);
+      color: rgba(57, 46, 69, 0.88);
+      line-height: 1.55;
+    }
+
+    /* Problem / Wake up call block */
+    .offer-pain-box {
+      background: rgba(244, 238, 230, 0.6);
+      border-left: 4px solid var(--accent-peach);
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin-bottom: 36px;
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: var(--text-main);
+    }
+
+    .offer-pain-box p + p {
+      margin-top: 10px;
+    }
+
+    /* Unlimited Killer Feature Banner */
+    .killer-feature-banner {
+      background: linear-gradient(135deg, rgba(216, 210, 235, 0.45) 0%, rgba(182, 200, 177, 0.35) 100%);
+      border: 1.5px solid rgba(190, 152, 92, 0.35);
+      border-radius: var(--radius-inner);
+      padding: 26px 28px;
+      margin-bottom: 40px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .killer-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--text-main);
+      font-size: 1.5rem;
+      box-shadow: 0 4px 14px rgba(57, 46, 69, 0.08);
+    }
+
+    .killer-content h4 {
+      font-size: 1.22rem;
+      margin-bottom: 6px;
+    }
+
+    .killer-content p {
+      font-size: 0.94rem;
+      color: rgba(57, 46, 69, 0.85);
+      line-height: 1.55;
+    }
+
+    /* What's Inside Grid */
+    .modules-section-title {
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 1.65rem;
+    }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+
+    .module-item-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(190, 152, 92, 0.24);
+      border-radius: var(--radius-inner);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: all 0.25s ease;
+    }
+
+    .module-item-card:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(57, 46, 69, 0.06);
+    }
+
+    .module-tag {
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent-gold);
+      background: rgba(190, 152, 92, 0.12);
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      align-self: flex-start;
+    }
+
+    .module-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .module-desc {
+      font-size: 0.9rem;
+      color: rgba(57, 46, 69, 0.78);
+      line-height: 1.55;
+    }
+
+    /* Audience Segments Section */
+    .audience-block {
+      background: #FFFFFF;
+      border: 1px solid rgba(190, 152, 92, 0.24);
+      border-radius: var(--radius-inner);
+      padding: 32px 28px;
+      margin-bottom: 40px;
+    }
+
+    .audience-block h4 {
+      font-size: 1.35rem;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 20px;
+    }
+
+    .aud-card {
+      background: rgba(244, 238, 230, 0.45);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .aud-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .aud-text {
+      font-size: 0.88rem;
+      color: rgba(57, 46, 69, 0.78);
+      line-height: 1.5;
+    }
+
+    /* Objections FAQ */
+    .objections-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .objection-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(190, 152, 92, 0.2);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .obj-q {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .obj-a {
+      font-size: 0.88rem;
+      color: rgba(57, 46, 69, 0.76);
+      line-height: 1.5;
+    }
+
+    /* Pricing & Final CTA */
+    .final-cta-pricing-box {
+      background: linear-gradient(135deg, rgba(232, 179, 158, 0.25) 0%, rgba(216, 210, 235, 0.3) 100%);
+      border: 2px solid var(--accent-gold);
+      border-radius: 22px;
+      padding: 38px 28px;
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto;
+      box-shadow: 0 16px 40px rgba(57, 46, 69, 0.08);
+    }
+
+    .anchor-comparison {
+      font-size: 0.95rem;
+      color: rgba(57, 46, 69, 0.82);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+
+    .price-old-strike {
+      font-size: 1.3rem;
+      text-decoration: line-through;
+      color: rgba(57, 46, 69, 0.45);
+    }
+
+    .price-current-large {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: var(--text-main);
+      font-family: 'Manrope', sans-serif;
+      line-height: 1;
+    }
+
+    .price-sub-urgency {
+      font-size: 0.88rem;
+      color: #935930;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .btn-checkout-now {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      max-width: 460px;
+      padding: 20px 40px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-peach);
+      color: var(--text-main) !important;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 1.18rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 12px 32px rgba(232, 179, 158, 0.6);
+      transition: all 0.3s ease;
+    }
+
+    .btn-checkout-now:hover {
+      background: #e2a48c;
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 18px 40px rgba(232, 179, 158, 0.7);
+    }
+
+    footer {
+      border-top: 1px solid rgba(190, 152, 92, 0.2);
+      padding: 35px 0 50px;
+      text-align: center;
+      font-size: 0.84rem;
+      color: rgba(57, 46, 69, 0.65);
+    }
+
+    footer p.quote {
+      font-size: 1.05rem;
+      color: var(--text-main);
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-wrapper">
+      <div class="brand-mark">
+        <span class="brand-title">Оля • Нумерология и нейросети</span>
+      </div>
+      <a href="https://t.me/varlamova_matrix" target="_blank" rel="noopener" class="nav-cta-btn">
+        <span>Telegram-канал</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero-section">
+      <div class="badge-pill">
+        <span>✦ Осознанность с характером</span>
+      </div>
+      <h1 class="hero-title">
+        Твой персональный <span class="font-serif accent">навигатор года</span>
+      </h1>
+      <p class="hero-desc">
+        Точный нумерологический расчет с 1 января по 31 декабря. Узнай, откуда черпать ресурс, в чем скрыт твой потенциал года, какие уроки готовит пространство и как сдать главный экзамен без выгорания.
+      </p>
+      <div class="hero-features">
+        <span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          Расчет любого года
+        </span>
+        <span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+          Событийные коды и чекер
+        </span>
+      </div>
+    </section>
+
+    <!-- CALCULATOR CARD FORM -->
+    <section class="calc-card" id="calculator">
+      <form id="matrixForm" onsubmit="calculateMatrix(event)">
+        <div class="calc-grid">
+          <div class="input-group">
+            <label class="input-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              Дата вашего рождения
+            </label>
+            <div class="date-inputs-row">
+              <select id="birthDay" class="form-control" required></select>
+              <select id="birthMonth" class="form-control" required></select>
+              <input type="number" id="birthYear" class="form-control" placeholder="Год" min="1920" max="2035" required>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              Исследуемый целевой год
+            </label>
+            <input type="number" id="targetYear" class="form-control" placeholder="Целевой год" min="1950" max="2050" required>
+          </div>
+        </div>
+
+        <div style="margin-top: 22px;">
+          <button type="submit" class="btn-calc">
+            <span>Рассчитать Матрицу Года</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+      </form>
+      <p class="calc-meta-hint">✦ Расчет занимает мгновение. Ваши данные конфиденциальны и не отправляются на сервера.</p>
+    </section>
+
+    <!-- RESULTS SECTION (HIDDEN INITIALLY) -->
+    <section class="results-section" id="resultsSection">
+      
+      <!-- Visual Matrix Diamond Display -->
+      <div class="matrix-display-card">
+        <h2 class="matrix-title-meta font-heading" id="resultYearHeading">Годовая Матрица</h2>
+        <p class="matrix-subtitle-meta" id="resultBirthMeta">Дата рождения: ... • Аркан года: ...</p>
+
+        <div class="matrix-svg-container">
+          <svg class="diamond-svg" viewBox="0 0 460 460" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="70,230 230,70 390,230 230,390" fill="none" stroke="#BE985C" stroke-width="1.6" opacity="0.65" />
+            <line x1="70" y1="230" x2="390" y2="230" stroke="#BE985C" stroke-width="1.2" opacity="0.45" stroke-dasharray="4 4" />
+            <line x1="230" y1="70" x2="230" y2="390" stroke="#BE985C" stroke-width="1.2" opacity="0.45" stroke-dasharray="4 4" />
+
+            <!-- Point Talent (Top) -->
+            <g class="matrix-node">
+              <circle cx="230" cy="70" r="32" fill="#D8D2EB" />
+              <text id="svg-b1" class="node-label-val" x="230" y="70" fill="#392E45">-</text>
+              <text x="230" y="24" text-anchor="middle" class="node-label-sub">Талант</text>
+            </g>
+
+            <!-- Point Resource (Left) -->
+            <g class="matrix-node">
+              <circle cx="70" cy="230" r="32" fill="#D8D2EB" />
+              <text id="svg-a1" class="node-label-val" x="70" y="230" fill="#392E45">-</text>
+              <text x="70" y="280" text-anchor="middle" class="node-label-sub">Ресурс</text>
+            </g>
+
+            <!-- Point Lesson (Right) -->
+            <g class="matrix-node">
+              <circle cx="390" cy="230" r="32" fill="#F8C6B5" />
+              <text id="svg-v1" class="node-label-val" x="390" y="230" fill="#392E45">-</text>
+              <text x="390" y="280" text-anchor="middle" class="node-label-sub">Урок</text>
+            </g>
+
+            <!-- Point Exam (Bottom) -->
+            <g class="matrix-node">
+              <circle cx="230" cy="390" r="32" fill="#F8C6B5" />
+              <text id="svg-g1" class="node-label-val" x="230" y="390" fill="#392E45">-</text>
+              <text x="230" y="440" text-anchor="middle" class="node-label-sub">Экзамен</text>
+            </g>
+
+            <!-- Point Essence (Center) -->
+            <g class="matrix-node">
+              <circle cx="230" cy="230" r="34" fill="#B6C8B1" />
+              <text id="svg-ya1" class="node-label-val" x="230" y="230" fill="#FFFFFF">-</text>
+              <text x="230" y="200" text-anchor="middle" class="node-label-sub" style="font-weight: 700;">Суть года</text>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Quick Badges -->
+        <div class="positions-quick-nav">
+          <div class="pos-quick-badge">
+            <span class="circle-tag" style="background: #D8D2EB;"></span>
+            <span>Ресурс: <b id="badge-val-a1">-</b></span>
+          </div>
+          <div class="pos-quick-badge">
+            <span class="circle-tag" style="background: #D8D2EB;"></span>
+            <span>Талант: <b id="badge-val-b1">-</b></span>
+          </div>
+          <div class="pos-quick-badge">
+            <span class="circle-tag" style="background: #F8C6B5;"></span>
+            <span>Урок: <b id="badge-val-v1">-</b></span>
+          </div>
+          <div class="pos-quick-badge">
+            <span class="circle-tag" style="background: #F8C6B5;"></span>
+            <span>Экзамен: <b id="badge-val-g1">-</b></span>
+          </div>
+          <div class="pos-quick-badge">
+            <span class="circle-tag" style="background: #B6C8B1;"></span>
+            <span>Суть года: <b id="badge-val-ya1">-</b></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Summary Section -->
+      <section class="quick-summary-section" id="quickSummarySection">
+        <div class="compact-summary-list" id="quickSummaryGrid"></div>
+
+        <!-- Unlock Full Access Banner 1 -->
+        <div class="unlock-access-card">
+          <div class="unlock-access-info">
+            <div class="unlock-icon-circle">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="unlock-access-title">Хотите получить полный разбор всех 5 позиций года?</div>
+              <div class="unlock-access-sub">Глубокие стратегии, чек-листы по плюсу/минусу и проверочные вопросы</div>
+            </div>
+          </div>
+          <button type="button" onclick="goToOffer()" class="btn-unlock-tg">
+            <span>Открыть полный доступ</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- Event Codes Section -->
+      <section class="event-codes-section">
+        <div class="section-headline">
+          <h3 class="font-heading">Коды событий и маркеры года</h3>
+        </div>
+        <div class="codes-grid" id="eventCodesGrid"></div>
+
+        <!-- Unlock Full Access Banner 2 -->
+        <div class="unlock-access-card">
+          <div class="unlock-access-info">
+            <div class="unlock-icon-circle">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+            </div>
+            <div>
+              <div class="unlock-access-title">Узнайте, как активировать ваши события года</div>
+              <div class="unlock-access-sub">Практические ключи реализации для недвижимости, денег, дорог и союзов</div>
+            </div>
+          </div>
+          <button type="button" onclick="goToOffer()" class="btn-unlock-tg">
+            <span>Открыть полный доступ</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           FULL HIGH-CONVERSION COMMERCIAL OFFER SECTION
+      ======================================================== -->
+      <section class="offer-card" id="fullAccessOffer">
+        <div class="offer-badge-wrap">
+          <div class="offer-badge">✦ Персональный навигатор на 365 дней</div>
+        </div>
+
+        <div class="offer-header-center">
+          <h3 class="offer-main-title font-heading">
+            «Матрица года: Твой личный маршрут»
+          </h3>
+          <p class="offer-sub-lead">
+            Спокойная ясность вместо тревоги и суеты. Понятная инструкция к своему состоянию: где вовремя приложить усилия, а где бережно притормозить, чтобы сохранить себя, деньги и важные отношения.
+          </p>
+        </div>
+
+        <!-- Mirroring Real Pain & Frustration -->
+        <div class="offer-pain-box">
+          <p>
+            <strong>Знакомо ощущение растерянности?</strong> В начале года мы строим большие планы, но уже через пару месяцев силы заканчиваются, дела буксуют, а вместо вдохновения накапливается усталость и самоедство.
+          </p>
+          <p>
+            <strong>Дело не в вашей неорганизованности.</strong> Просто порой мы пытаемся бежать марафон в период, когда организму и психике нужно восстановиться, укрепить фундамент или побыть с близкими. Матрица не сделает выбор за вас — она даёт честную систему координат, чтобы вы двигались в согласии со своими ритмами, а не на износ.
+          </p>
+        </div>
+
+        <!-- Unlimited Killer Feature -->
+        <div class="killer-feature-banner">
+          <div class="killer-icon">✦</div>
+          <div class="killer-content">
+            <h4 class="font-heading">Практичный инструмент для всей семьи без ограничений</h4>
+            <p>
+              Вы получаете доступ не к разовой шпаргалке, а к удобному сервису для жизни. Анализируйте любые периоды: прошлые годы (чтобы прояснить причины кризисов и отпустить обиды) или предстоящие шаги для <strong>себя, близких, детей или клиентов</strong> в любое удобное время.
+            </p>
+          </div>
+        </div>
+
+        <!-- Value Modules Grid -->
+        <h4 class="modules-section-title font-heading">Что входит в полный навигатор по вашему году:</h4>
+        <div class="modules-grid">
+          <div class="module-item-card">
+            <span class="module-tag">Энергия</span>
+            <div class="module-name font-heading">1. Источник ресурса и баланс</div>
+            <p class="module-desc">
+              Что естественным образом возвращает вам силы, устойчивость и интерес к жизни. Где скрываются привычки, незаметно истощающие эмоциональный фон.
+            </p>
+          </div>
+
+          <div class="module-item-card">
+            <span class="module-tag">Дела и финансы</span>
+            <div class="module-name font-heading">2. Финансовые ориентиры</div>
+            <p class="module-desc">
+              Спокойный аудит возможностей: где сейчас разумнее развиваться, когда стоит вкладываться в долгосрочные шаги, а где проявить осмотрительность и защитить бюджет.
+            </p>
+          </div>
+
+          <div class="module-item-card">
+            <span class="module-tag">Отношения</span>
+            <div class="module-name font-heading">3. Близкие союзы и диалог</div>
+            <p class="module-desc">
+              Как выстраивать контакт с партнёром без взаимных претензий и давления. На что опереться в периоды недопонимания и как сохранить тепло в семье.
+            </p>
+          </div>
+
+          <div class="module-item-card">
+            <span class="module-tag">Осознанность</span>
+            <div class="module-name font-heading">4. Зоны внимания и экзамен года</div>
+            <p class="module-desc">
+              Точки внутреннего роста и повторяющиеся сценарии. Проверочные вопросы для честного разговора с собой, помогающие принимать взвешенные решения без паники.
+            </p>
+          </div>
+
+          <div class="module-item-card">
+            <span class="module-tag">Тело и самочувствие</span>
+            <div class="module-name font-heading">5. Бережность к себе</div>
+            <p class="module-desc">
+              Сигналы перегрузки, на которые важно обращать внимание заранее. Мягкие телесные и восстановительные привычки для поддержания крепкого тонуса.
+            </p>
+          </div>
+
+          <div class="module-item-card">
+            <span class="module-tag">Формат</span>
+            <div class="module-name font-heading">6. Готовый конспект в PDF</div>
+            <p class="module-desc">
+              Удобный структурированный буклет для печати или спокойного перечитывания с планшета и телефона в течение всех 365 дней.
+            </p>
+          </div>
+        </div>
+
+        <!-- Audience Segments -->
+        <div class="audience-block">
+          <h4 class="font-heading">Кому этот подход будет особенно полезен:</h4>
+          <div class="audience-grid">
+            <div class="aud-card">
+              <div class="aud-title">💼 В работе и собственном деле</div>
+              <div class="aud-text">
+                Перестать выгорать в попытке успеть всё и сразу. Понять общий контекст периода, расставить приоритеты и распределять свои силы равномерно.
+              </div>
+            </div>
+            <div class="aud-card">
+              <div class="aud-title">❤️ В семье и близких отношениях</div>
+              <div class="aud-text">
+                Лучше понимать внутренние состояния близких, бережно поддерживать партнёра в периоды перемен и вовремя находить нужные слова.
+              </div>
+            </div>
+            <div class="aud-card">
+              <div class="aud-title">🔮 Практикам и помогающим специалистам</div>
+              <div class="aud-text">
+                Использовать сервис как глубокую основу для консультаций и бесед с клиентами, экономя время на рутине и подсвечивая ключевые темы.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Objections Handling -->
+        <div class="objections-grid">
+          <div class="objection-card">
+            <div class="obj-q">«Это предсказание судьбы или гадание?»</div>
+            <div class="obj-a">
+              Нет. Это система архетипов и психологических ориентиров. Сервис не программирует будущее, а помогает взглянуть на свою жизнь шире и осознаннее.
+            </div>
+          </div>
+          <div class="objection-card">
+            <div class="obj-q">«А если период окажется сложным?»</div>
+            <div class="obj-a">
+              В году нет «плохих» энергий. Любой экзамен — это просто точка созревания. Понимая задачу периода, вы проходите её устойчиво и без лишнего стресса.
+            </div>
+          </div>
+          <div class="objection-card">
+            <div class="obj-q">«Гарантирует ли сервис результат?»</div>
+            <div class="obj-a">
+              Сервис даёт точную карту и подсвечивает дорогу, но шаги по ней делаете только вы. Результат всегда рождается из ваших реальных действий и бережного выбора себя.
+            </div>
+          </div>
+        </div>
+
+        <!-- Pricing & Final Action Button -->
+        <div class="final-cta-pricing-box">
+          <p class="anchor-comparison">
+            Индивидуальный годовой разбор у специалиста обычно стоит <strong>от 7 000 до 25 000 ₽</strong> за одну сессию.<br>
+            Вы получаете <strong>самостоятельный навигатор для себя и близких</strong> с бессрочным доступом:
+          </p>
+
+          <div class="price-row">
+            <span class="price-old-strike">3 990 ₽</span>
+            <span class="price-current-large">1 990 ₽</span>
+          </div>
+          <div class="price-sub-urgency">
+            ✦ Специальные условия раннего доступа активны сейчас
+          </div>
+
+          <a href="https://payform.ru/f8cOOe3/" target="_blank" rel="noopener" class="btn-checkout-now" id="paymentLinkBtn">
+            <span>Получить полный навигатор</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <p style="margin-top: 14px; font-size: 0.8rem; color: rgba(57, 46, 69, 0.65);">
+            ✦ Доступ ко всем материалам и расчётам открывается сразу после оформления
+          </p>
+        </div>
+      </section>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p class="quote font-serif">«Создавай. Применяй. Делись. Можно по-своему.»</p>
+      <p>© Оля • Нумерология и нейросети.</p>
+      <p style="margin-top: 6px; font-size: 0.76rem;">Расчет носит рекомендательный характер для самопознания и личностного развития.</p>
+      <p style="margin-top: 10px; font-size: 0.8rem; display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap;">
+        <a href="https://varlamova-matrix.tb.ru/" target="_blank" rel="noopener" style="color: var(--text-main); opacity: 0.8; text-decoration: underline; text-underline-offset: 3px; transition: opacity 0.2s ease;">Публичная оферта</a>
+        <span style="opacity: 0.4;">•</span>
+        <a href="https://taplink.cc/varlamovamatrix" target="_blank" rel="noopener" style="color: var(--text-main); opacity: 0.8; text-decoration: underline; text-underline-offset: 3px; transition: opacity 0.2s ease;">Согласие на обработку персональных данных</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    function reduceTo22(num) {
+      num = parseInt(num, 10);
+      if (isNaN(num) || num <= 0) return 0;
+      while (num > 22) {
+        num = num.toString().split('').reduce((acc, digit) => acc + parseInt(digit, 10), 0);
+      }
+      return num;
+    }
+
+    function sumDigits(num) {
+      return num.toString().split('').reduce((acc, digit) => acc + parseInt(digit, 10), 0);
+    }
+
+    const ARCANES_NAMES = {
+      3: "Императрица", 4: "Император", 5: "Иерофант", 6: "Влюбленные", 7: "Колесница",
+      8: "Справедливость", 9: "Отшельник", 10: "Колесо Фортуны", 11: "Сила", 12: "Повешенный",
+      13: "Смерть", 14: "Умеренность", 15: "Дьявол", 16: "Башня", 17: "Звезда",
+      18: "Луна", 19: "Солнце", 20: "Страшный Суд", 21: "Мир", 22: "Шут"
+    };
+
+    const BRIEF_ARCANES = {
+      3: { res: "уход за собой, уют, женские круги, комфорт", tal: "женственность, взращивание проектов, доход", les: "не контролировать всё, делегировать, созидать", ex: "разумные траты, забота о теле, без суеты", ess: "изобилие и созидание плодовитых плодов" },
+      4: { res: "дисциплина, порядок, спорт, опора на себя", tal: "системность, лидерство, масштабирование", les: "не скатываться в деспотизм, баланс с отдыхом", ex: "наведение порядка в финансах, ответственность", ess: "выход на новый социальный статус и фундамент" },
+      5: { res: "новые знания, порядок в делах, правила и семья", tal: "систематизация, ораторство, наставничество", les: "делиться опытом с любовью, без поучений", ex: "чистота в документах, гибкость мышления", ess: "свое место в системе и опора на ценности" },
+      6: { res: "любовь к себе, эстетика, круг единомышленников", tal: "дипломатия, тонкий вкус, союзы сердец", les: "выбирать сердцем, выход из созависимости", ex: "принятие своей внешности, верность выбору", ess: "действия исключительно из любви" },
+      7: { res: "четкие цели, движение, спорт, путешествия", tal: "стратегическое видение, управление командой", les: "двигаться последовательно, без борьбы и спешки", ex: "честный труд, без халявы, забота о позвоночнике", ess: "взять руль жизни в свои руки" },
+      8: { res: "баланс, ясность, понимание законов кармы", tal: "организаторский дар, юридическая точность", les: "поступать с людьми так, как хочешь к себе", ex: "кристальная честность, порядок в договорах и налогах", ess: "внутреннее равновесие и понимание причин" },
+      9: { res: "уединение, книги, природа, мудрый покой", tal: "глубокая аналитика, передача опыта, целительство", les: "брать достойную оплату, не прятаться от мира", ex: "не закрываться в ракушке, внимание к здоровью", ess: "обретение мудрости и самодостаточности" },
+      10: { res: "легкость, спонтанность, доверие жизни, поездки", tal: "синхронизация с удачей, денежный магнетизм", les: "перестать пахать через силу, слышать желания", ex: "адаптация к переменам, отказ от кредитов", ess: "жизнь в потоке и доверии Вселенной" },
+      11: { res: "спорт, природа, баланс напряжения и релакса", tal: "высокая работоспособность, витальность, харизма", les: "партнерство равных (1+1=11), мягкость", ex: "не выгорать, отказаться от давления и агрессии", ess: "управление мощным потенциалом во благо" },
+      12: { res: "служение из изобилия, креатив, забота о себе", tal: "нестандартное видение, новаторство, эмпатия", les: "выход из жертвы, твердое «нет» абьюзу", ex: "достойная оплата за труд, защита своих границ", ess: "забота о себе и раскрытие своего взгляда" },
+      13: { res: "расхламление, очищение, смелые перемены", tal: "адаптация, дар реаниматора, новые пути", les: "отпускать отжившее, не рубить с плеча", ex: "опираться на фундамент прошлого, без страха", ess: "освобождение от старого и перерождение" },
+      14: { res: "покой души, умеренность, вода, природа", tal: "гармонизация пространств, ангельское терпение", les: "решения в состоянии штиля, чувство меры", ex: "состояние «мне достаточно», режим дня", ess: "золотая середина и контакт со своей душой" },
+      15: { res: "проявленность, харизма, роскошь, быть собой", tal: "большие деньги, принятие тени, влияние", les: "экологичные продажи, мечтать по-крупному", ex: "свобода от зависимостей, искушений и лжи", ess: "смелая проявленность без масок" },
+      16: { res: "духовный рост, стройка, ремонт, расхламление", tal: "стойкость Феникса, масштабные преобразования", les: "внутренняя опора, независимая от внешнего", ex: "холодная голова в кризис, не держаться за руины", ess: "духовное пробуждение и новый прочный фундамент" },
+      17: { res: "творчество, публичность, стиль, вдохновение", tal: "сценический магнетизм, путеводная звезда", les: "выходить из тени в соцсети, шлифовать мастерство", ex: "преодолеть самозванца, без звездной болезни", ess: "раскрыть свой талант и светить людям" },
+      18: { res: "интуиция, психология, уют дома, метафизика", tal: "материализация мыслей через образы, эмпатия", les: "идти прямо в свои страхи, жить без масок", ex: "кристальная честность, отказ от иллюзий и долгов", ess: "преодолеть страхи и доверять интуиции" },
+      19: { res: "радость мелочей, контакт с детьми, щедрость", tal: "магнетизм изобилия, тепло, неиссякаемый свет", les: "баланс карьеры и семьи, не выжигать контролем", ex: "не сжигать себя чувством вины, баловать себя", ess: "светить открыто и жить в изобилии" },
+      20: { res: "укрепление связей с родом, традиции, уют", tal: "масштабные авторские системы, статус, влияние", les: "простить родителей, встать на свое место в роду", ex: "мирное решение споров, укрепление репутации", ess: "выход на новый уровень рода и авторский метод" },
+      21: { res: "путешествия, онлайн, новые технологии, масштаб", tal: "глобальное видение без границ, дипломатия", les: "мыслить шире рамок, доводить начатое до конца", ex: "гибкость мышления, толерантность, без распрей", ess: "квантовый скачок сознания и расширение" },
+      22: { res: "внутренняя свобода, легкость, юмор, праздник", tal: "дар начинать с нуля легко и играючи", les: "взрослая ответственность за свою свободу", ex: "без инфантилизма, необдуманных рисков и долгов", ess: "жизнь с чистого листа и взрослая легкость" }
+    };
+
+    const EVENT_FORMULAS = [
+      { id: "real_estate", title: "Энергия недвижимости", check: (a) => [3, 4, 16, 19, 20, 21].some(x => a.includes(x)) },
+      { id: "roads", title: "Энергия дорог и путешествий", check: (a) => [7, 10, 21, 22].some(x => a.includes(x)) },
+      { id: "wealth", title: "Формула богатства и масштабирования", check: (a) => {
+          const hasBase = a.includes(3) || a.includes(4) || a.includes(10) || a.includes(20);
+          const hasBoost = [19, 7, 11, 15, 21].some(x => a.includes(x));
+          return hasBase && hasBoost;
+        }
+      },
+      { id: "shift", title: "Год глубоких перемен и трансформации", check: (a) => [13, 16, 20, 22].some(x => a.includes(x)) },
+      { id: "health", title: "Особый фокус на здоровье и теле", check: (a) => [11, 12, 16, 18].some(x => a.includes(x)) },
+      { id: "love", title: "Год любви, союзов и семьи", check: (a) => [3, 4, 5, 6, 15, 19, 20].some(x => a.includes(x)) }
+    ];
+
+    const POSITION_ROLES = {
+      res: "Источник сил и общий вайб: заряжает энергией в плюсе и опустошает при уходе в минус",
+      tal: "Скрытый потенциал и бонус от мира: точка удачи для кратного роста в делах",
+      les: "Стратегия действий и контрольные работы: напрямую влияет на деньги, здоровье и материю",
+      ex: "Главный триггер и проверка на прочность: зона риска и стресса, требующая осознанности",
+      ess: "Финальный вектор и смысл года: ключевой итог, к которому важно прийти к 31 декабря"
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      populateDaySelect();
+      populateMonthSelect();
+    });
+
+    function populateDaySelect() {
+      const select = document.getElementById('birthDay');
+      select.innerHTML = '<option value="" disabled selected>День</option>';
+      for (let i = 1; i <= 31; i++) {
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.textContent = i < 10 ? '0' + i : i;
+        select.appendChild(opt);
+      }
+    }
+
+    function populateMonthSelect() {
+      const months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+      const select = document.getElementById('birthMonth');
+      select.innerHTML = '<option value="" disabled selected>Месяц</option>';
+      months.forEach((m, idx) => {
+        const opt = document.createElement('option');
+        opt.value = idx + 1;
+        opt.textContent = m;
+        select.appendChild(opt);
+      });
+    }
+
+    function calculateMatrix(e) {
+      if (e) e.preventDefault();
+      const day = parseInt(document.getElementById('birthDay').value, 10);
+      const month = parseInt(document.getElementById('birthMonth').value, 10);
+      const birthYear = parseInt(document.getElementById('birthYear').value, 10);
+      const targetYear = parseInt(document.getElementById('targetYear').value, 10);
+
+      const A = reduceTo22(day);
+      const B = month;
+      const V = reduceTo22(sumDigits(birthYear));
+      const G = reduceTo22(A + B + V);
+
+      const ArkanGoda = reduceTo22(sumDigits(targetYear));
+
+      const A1 = reduceTo22(A + ArkanGoda);
+      const B1 = reduceTo22(B + ArkanGoda);
+      const V1 = reduceTo22(V + ArkanGoda);
+      const G1 = reduceTo22(G + ArkanGoda);
+      const Ya1 = reduceTo22(A1 + B1 + V1 + G1);
+
+      document.getElementById('svg-a1').textContent = A1;
+      document.getElementById('svg-b1').textContent = B1;
+      document.getElementById('svg-v1').textContent = V1;
+      document.getElementById('svg-g1').textContent = G1;
+      document.getElementById('svg-ya1').textContent = Ya1;
+
+      document.getElementById('badge-val-a1').textContent = A1;
+      document.getElementById('badge-val-b1').textContent = B1;
+      document.getElementById('badge-val-v1').textContent = V1;
+      document.getElementById('badge-val-g1').textContent = G1;
+      document.getElementById('badge-val-ya1').textContent = Ya1;
+
+      const formattedDay = day < 10 ? '0' + day : day;
+      const formattedMonth = month < 10 ? '0' + month : month;
+      document.getElementById('resultYearHeading').textContent = `Годовая Матрица на ${targetYear} год`;
+      document.getElementById('resultBirthMeta').textContent = 
+        `Дата рождения: ${formattedDay}.${formattedMonth}.${birthYear} • Аркан года: ${ArkanGoda}`;
+
+      renderQuickSummary(A1, B1, V1, G1, Ya1);
+      renderEventCodes([A1, B1, V1, G1, Ya1]);
+
+      const resultsSection = document.getElementById('resultsSection');
+      resultsSection.style.display = 'block';
+      resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function renderQuickSummary(a1, b1, v1, g1, ya1) {
+      const container = document.getElementById('quickSummaryGrid');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const items = [
+        { label: "Ресурс", arcane: a1, badgeBg: "#D8D2EB", role: POSITION_ROLES.res, text: BRIEF_ARCANES[a1]?.res || "наполнение силой и баланс" },
+        { label: "Талант", arcane: b1, badgeBg: "#D8D2EB", role: POSITION_ROLES.tal, text: BRIEF_ARCANES[b1]?.tal || "раскрытие скрытых даров" },
+        { label: "Урок", arcane: v1, badgeBg: "#F8C6B5", role: POSITION_ROLES.les, text: BRIEF_ARCANES[v1]?.les || "главная стратегия действий" },
+        { label: "Экзамен", arcane: g1, badgeBg: "#F8C6B5", role: POSITION_ROLES.ex, text: BRIEF_ARCANES[g1]?.ex || "фокус самоконтроля" },
+        { label: "Суть года", arcane: ya1, badgeBg: "#B6C8B1", role: POSITION_ROLES.ess, text: BRIEF_ARCANES[ya1]?.ess || "главный вектор и смысл" }
+      ];
+
+      items.forEach(item => {
+        const name = ARCANES_NAMES[item.arcane] || `Аркан ${item.arcane}`;
+        const row = document.createElement('div');
+        row.className = 'compact-summary-row';
+        row.innerHTML = `
+          <div class="compact-row-header">
+            <div class="compact-pos-badge" style="background: ${item.badgeBg};">
+              <span>${item.label}: ${item.arcane} (${name})</span>
+            </div>
+            <div class="compact-pos-role">${item.role}</div>
+          </div>
+          <div class="compact-summary-text">
+            <strong>✦ Проявление:</strong> ${item.text}
+          </div>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    function renderEventCodes(arcanesList) {
+      const container = document.getElementById('eventCodesGrid');
+      if (!container) return;
+      container.innerHTML = '';
+
+      EVENT_FORMULAS.forEach(f => {
+        const isActive = f.check(arcanesList);
+        const card = document.createElement('div');
+        card.className = 'code-card';
+        card.innerHTML = `
+          <div class="code-badge-status ${isActive ? 'active' : 'inactive'}">
+            ${isActive ? '✦ Активирован в карте' : 'Не проявлен'}
+          </div>
+          <h4 class="code-title font-heading">${f.title}</h4>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function goToOffer() {
+      const offerSection = document.getElementById('fullAccessOffer');
+      if (offerSection) {
+        offerSection.classList.add('active');
+        offerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        offerSection.classList.remove('highlight-pulse');
+        void offerSection.offsetWidth;
+        offerSection.classList.add('highlight-pulse');
+      }
+    }
+  </script>
+</body>
+</html>
